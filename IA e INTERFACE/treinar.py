@@ -41,7 +41,7 @@ from torchvision.models import EfficientNet_B0_Weights, efficientnet_b0
 # CONFIGURACAO DO EXPERIMENTO
 # ============================================================================
 
-SEMENTE = 40
+SEMENTE = 41
 # Marcador documental do experimento (nao altera o treinamento).
 EXPERIMENTO_REFERENCIA = "treino_12"
 TAMANHO_ENTRADA = 320                # Antes: 224; arquivos reais: 320x320
