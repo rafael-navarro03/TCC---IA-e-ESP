@@ -1,0 +1,170 @@
+{
+  "identificador": "peca_20261103_165118_074697",
+  "situacao": "concluida",
+  "inicio": "2026-11-03T16:51:18.075",
+  "stream": "http://192.168.0.101:81/stream",
+  "resolucao_frame": [
+    1600,
+    1200
+  ],
+  "roi_frente": {
+    "x": 610,
+    "y": 466,
+    "w": 320,
+    "h": 320
+  },
+  "roi_verso": {
+    "x": 483,
+    "y": 463,
+    "w": 320,
+    "h": 320
+  },
+  "rotulo_frente": "conforme",
+  "rotulo_verso": "conforme",
+  "classe_peca": "conforme",
+  "regra_peca": "Nao conforme se qualquer face e nao conforme; conforme se ambas sao conformes.",
+  "plano": {
+    "frente": 4,
+    "verso": 4
+  },
+  "transformacoes_por_lado": [
+    "original",
+    "inversao_vertical",
+    "espelhamento_horizontal",
+    "clareamento_gamma"
+  ],
+  "gamma_clareamento": 0.9,
+  "configuracao_esp32": {
+    "stream_fps": 5.0,
+    "clients": 1,
+    "rssi": -39,
+    "framesize": "UXGA 1600x1200",
+    "quality": 8,
+    "brightness": 0,
+    "contrast": 0,
+    "saturation": 0,
+    "hmirror": 0,
+    "vflip": 0,
+    "neo_mode": "dual",
+    "color1": "FA9696",
+    "color2": "FF5050",
+    "neo_brightness": 5,
+    "jpeg_bytes": 161709
+  },
+  "imagens": [
+    {
+      "arquivo": "frente_01.png",
+      "lado": "frente",
+      "rotulo_face": "conforme",
+      "numero": 1,
+      "transformacao": "original",
+      "horario": "2026-11-03T16:51:19.419",
+      "roi": {
+        "x": 610,
+        "y": 466,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_02.png",
+      "lado": "frente",
+      "rotulo_face": "conforme",
+      "numero": 2,
+      "transformacao": "inversao_vertical",
+      "horario": "2026-11-03T16:51:20.071",
+      "roi": {
+        "x": 610,
+        "y": 466,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_03.png",
+      "lado": "frente",
+      "rotulo_face": "conforme",
+      "numero": 3,
+      "transformacao": "espelhamento_horizontal",
+      "horario": "2026-11-03T16:51:20.877",
+      "roi": {
+        "x": 610,
+        "y": 466,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_04.png",
+      "lado": "frente",
+      "rotulo_face": "conforme",
+      "numero": 4,
+      "transformacao": "clareamento_gamma",
+      "horario": "2026-11-03T16:51:21.616",
+      "roi": {
+        "x": 610,
+        "y": 466,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_01.png",
+      "lado": "verso",
+      "rotulo_face": "conforme",
+      "numero": 1,
+      "transformacao": "original",
+      "horario": "2026-11-03T16:51:53.530",
+      "roi": {
+        "x": 483,
+        "y": 463,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_02.png",
+      "lado": "verso",
+      "rotulo_face": "conforme",
+      "numero": 2,
+      "transformacao": "inversao_vertical",
+      "horario": "2026-11-03T16:51:54.282",
+      "roi": {
+        "x": 483,
+        "y": 463,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_03.png",
+      "lado": "verso",
+      "rotulo_face": "conforme",
+      "numero": 3,
+      "transformacao": "espelhamento_horizontal",
+      "horario": "2026-11-03T16:51:54.942",
+      "roi": {
+        "x": 483,
+        "y": 463,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_04.png",
+      "lado": "verso",
+      "rotulo_face": "conforme",
+      "numero": 4,
+      "transformacao": "clareamento_gamma",
+      "horario": "2026-11-03T16:51:55.732",
+      "roi": {
+        "x": 483,
+        "y": 463,
+        "w": 320,
+        "h": 320
+      }
+    }
+  ],
+  "fim": "2026-11-03T16:51:55.734",
+  "total_imagens": 8
+}

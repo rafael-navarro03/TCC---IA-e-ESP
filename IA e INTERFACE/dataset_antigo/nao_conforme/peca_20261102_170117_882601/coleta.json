@@ -1,0 +1,289 @@
+{
+  "identificador": "peca_20261102_170117_882601",
+  "classe_peca": "nao_conforme",
+  "situacao": "concluida",
+  "inicio": "2026-11-02T17:01:17.883",
+  "stream": "http://192.168.0.101:81/stream",
+  "resolucao_frame": [
+    1280,
+    1024
+  ],
+  "roi_frente": {
+    "x": 496,
+    "y": 353,
+    "w": 320,
+    "h": 320
+  },
+  "plano": {
+    "frente": 10,
+    "verso": 10
+  },
+  "formato": "PNG sem compressao com perdas adicionais",
+  "configuracao_esp32": {
+    "stream_fps": 8.0,
+    "clients": 1,
+    "rssi": -49,
+    "framesize": "SXGA 1280x1024",
+    "quality": 8,
+    "brightness": 0,
+    "contrast": 0,
+    "saturation": 0,
+    "hmirror": 0,
+    "vflip": 0,
+    "neo_mode": "solid",
+    "color1": "FFFFFF",
+    "color2": "FF0000",
+    "neo_brightness": 5,
+    "jpeg_bytes": 82554
+  },
+  "imagens": [
+    {
+      "arquivo": "frente_01.png",
+      "lado": "frente",
+      "numero": 1,
+      "horario": "2026-11-02T17:01:19.198",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_02.png",
+      "lado": "frente",
+      "numero": 2,
+      "horario": "2026-11-02T17:01:19.841",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_03.png",
+      "lado": "frente",
+      "numero": 3,
+      "horario": "2026-11-02T17:01:20.560",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_04.png",
+      "lado": "frente",
+      "numero": 4,
+      "horario": "2026-11-02T17:01:21.206",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_05.png",
+      "lado": "frente",
+      "numero": 5,
+      "horario": "2026-11-02T17:01:21.910",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_06.png",
+      "lado": "frente",
+      "numero": 6,
+      "horario": "2026-11-02T17:01:22.613",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_07.png",
+      "lado": "frente",
+      "numero": 7,
+      "horario": "2026-11-02T17:01:23.245",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_08.png",
+      "lado": "frente",
+      "numero": 8,
+      "horario": "2026-11-02T17:01:23.940",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_09.png",
+      "lado": "frente",
+      "numero": 9,
+      "horario": "2026-11-02T17:01:24.612",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "frente_10.png",
+      "lado": "frente",
+      "numero": 10,
+      "horario": "2026-11-02T17:01:25.259",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_01.png",
+      "lado": "verso",
+      "numero": 1,
+      "horario": "2026-11-02T17:02:10.472",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_02.png",
+      "lado": "verso",
+      "numero": 2,
+      "horario": "2026-11-02T17:02:11.191",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_03.png",
+      "lado": "verso",
+      "numero": 3,
+      "horario": "2026-11-02T17:02:11.854",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_04.png",
+      "lado": "verso",
+      "numero": 4,
+      "horario": "2026-11-02T17:02:12.491",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_05.png",
+      "lado": "verso",
+      "numero": 5,
+      "horario": "2026-11-02T17:02:13.138",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_06.png",
+      "lado": "verso",
+      "numero": 6,
+      "horario": "2026-11-02T17:02:13.756",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_07.png",
+      "lado": "verso",
+      "numero": 7,
+      "horario": "2026-11-02T17:02:14.416",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_08.png",
+      "lado": "verso",
+      "numero": 8,
+      "horario": "2026-11-02T17:02:15.118",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_09.png",
+      "lado": "verso",
+      "numero": 9,
+      "horario": "2026-11-02T17:02:15.844",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    },
+    {
+      "arquivo": "verso_10.png",
+      "lado": "verso",
+      "numero": 10,
+      "horario": "2026-11-02T17:02:16.462",
+      "roi": {
+        "x": 496,
+        "y": 353,
+        "w": 320,
+        "h": 320
+      }
+    }
+  ],
+  "roi_verso": {
+    "x": 496,
+    "y": 353,
+    "w": 320,
+    "h": 320
+  },
+  "fim": "2026-11-02T17:02:16.463",
+  "total_imagens": 20
+}

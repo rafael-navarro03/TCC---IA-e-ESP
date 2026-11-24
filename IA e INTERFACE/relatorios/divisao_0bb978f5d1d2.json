@@ -1,0 +1,32 @@
+{
+  "assinatura_dataset": "0bb978f5d1d2",
+  "origem": "semente",
+  "divisao": {
+    "treino": [
+      "conforme/peca_20261102_161257_616028",
+      "conforme/peca_20261102_160949_506623",
+      "nao_conforme/peca_20261102_164734_993901",
+      "conforme/peca_20261102_161533_715930",
+      "conforme/peca_20261102_160839_211157",
+      "conforme/peca_20261102_161209_474700",
+      "nao_conforme/peca_20261102_164817_345241",
+      "nao_conforme/peca_20261102_170117_882601",
+      "conforme/peca_20261102_161708_981342",
+      "nao_conforme/peca_20261102_170016_807676",
+      "nao_conforme/peca_20261102_164908_651591",
+      "nao_conforme/peca_20261102_164652_268584",
+      "conforme/peca_20261102_161622_918885",
+      "nao_conforme/peca_20261102_165015_429614"
+    ],
+    "validacao": [
+      "conforme/peca_20261102_161117_721756",
+      "nao_conforme/peca_20261102_165119_455925",
+      "nao_conforme/peca_20261102_164539_635000"
+    ],
+    "teste": [
+      "conforme/peca_20261102_160542_737561",
+      "nao_conforme/peca_20261102_170259_470711",
+      "conforme/peca_20261102_160450_925777"
+    ]
+  }
+}

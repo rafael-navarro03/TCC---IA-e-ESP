@@ -1,0 +1,21 @@
+{
+  "data": "2026-11-22T18:55:05",
+  "semente": 40,
+  "epocas_cabecalho": 15,
+  "epocas_ajuste": 50,
+  "batch_size": 16,
+  "lr_cabecalho": 0.0005,
+  "lr_ajuste": 1e-05,
+  "weight_decay": 0.001,
+  "dropout": 0.3,
+  "paciencia_early_stopping": 10,
+  "paciencia_scheduler": 3,
+  "usar_pesos_de_classe": false,
+  "rotacao_extra_graus": 0,
+  "limiar": 0.5,
+  "n_fotos_por_face": 4,
+  "validacao_teste": "somente *_01.png",
+  "dataset_signature": "1f37747da8d6",
+  "torch_version": "2.14.0+cpu",
+  "device": "cpu"
+}

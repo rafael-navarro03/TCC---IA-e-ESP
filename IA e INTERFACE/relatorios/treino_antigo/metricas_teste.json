@@ -1,0 +1,64 @@
+{
+  "data": "2026-11-02T17:23:14",
+  "modelo": "EfficientNet-B0 + ImageNet",
+  "epoca_melhor_modelo": 13,
+  "classes": [
+    "conforme",
+    "nao_conforme"
+  ],
+  "conjuntos_pecas": {
+    "treino": 14,
+    "validacao": 3,
+    "teste": 3
+  },
+  "conjuntos_imagens": {
+    "treino": 280,
+    "validacao": 60,
+    "teste": 60
+  },
+  "teste_por_imagem": {
+    "total": 60,
+    "acuracia": 0.45,
+    "precisao": 0.25925925925925924,
+    "recall": 0.35,
+    "f1": 0.29787234042553196,
+    "TP": 7,
+    "TN": 20,
+    "FP": 20,
+    "FN": 13,
+    "matriz_confusao": [
+      [
+        20,
+        20
+      ],
+      [
+        13,
+        7
+      ]
+    ]
+  },
+  "teste_por_peca": {
+    "total": 3,
+    "acuracia": 0.3333333333333333,
+    "precisao": 0.3333333333333333,
+    "recall": 1.0,
+    "f1": 0.5,
+    "TP": 1,
+    "TN": 0,
+    "FP": 2,
+    "FN": 0,
+    "matriz_confusao": [
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        1
+      ]
+    ]
+  },
+  "tempo_medio_avaliacao_ms_por_imagem": 23.17,
+  "agregacao_peca": "max(media(frente), media(verso))",
+  "observacao": "Dados insuficientes para comprovar desempenho industrial."
+}

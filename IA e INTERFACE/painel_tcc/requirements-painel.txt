@@ -1,0 +1,8 @@
+fastapi>=0.115,<1.0
+uvicorn>=0.30,<1.0
+opencv-python>=4.8
+numpy>=1.24
+requests>=2.31
+Pillow>=10
+# Instale torch e torchvision compatíveis com seu sistema via PyTorch.
+# Se o .venv do treinamento já existe, eles já estarão instalados.

@@ -1,0 +1,22 @@
+{
+  "treino": "treino_7",
+  "dataset": "1f37747da8d6",
+  "modo": "faces_rotuladas_individualmente",
+  "modelo": "C:\\Users\\Rafa\\Documents\\Facul\\10º Semestre\\TCC\\Códigos\\IA\\modelos\\treino_7.pt",
+  "melhor_epoca": 13,
+  "val_loss": 0.506426,
+  "val_acc_frente": 0.733333,
+  "val_acc_verso": 0.8,
+  "val_recall_nc": 0.642857,
+  "val_fp_faces": 2,
+  "val_fn_faces": 5,
+  "teste_acc_frente": 0.733333,
+  "teste_acc_verso": 0.733333,
+  "teste_acc_peca": 0.733333,
+  "teste_recall_nc": 0.416667,
+  "teste_fp_faces": 1,
+  "teste_fn_faces": 7,
+  "lr_ajuste": 1e-05,
+  "weight_decay": 0.001,
+  "dropout": 0.3
+}

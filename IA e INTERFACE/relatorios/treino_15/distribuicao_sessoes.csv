@@ -1,0 +1,13 @@
+﻿conjunto;sessao;classe_peca;n_pecas
+treino;2026-11-03;conforme;21
+treino;2026-11-03;nao_conforme;21
+treino;2026-11-22;conforme;14
+treino;2026-11-22;nao_conforme;14
+validacao;2026-11-03;conforme;6
+validacao;2026-11-03;nao_conforme;6
+validacao;2026-11-22;conforme;2
+validacao;2026-11-22;nao_conforme;1
+teste;2026-11-03;conforme;4
+teste;2026-11-03;nao_conforme;4
+teste;2026-11-22;conforme;3
+teste;2026-11-22;nao_conforme;4

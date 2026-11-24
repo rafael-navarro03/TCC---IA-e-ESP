@@ -1,0 +1,4 @@
+﻿horario;modelo;melhor_epoca;limiar;resultado;frente_resultado;verso_resultado;prob_frente_nc;prob_verso_nc;prob_peca_nc;leituras_frente;leituras_verso;duracao_total_s;roi_modo;roi_frente;roi_verso
+2026-11-24T14:06:09;treino_11.pt;29;0.5;NAO CONFORME;NAO CONFORME;NAO CONFORME;0.606315;0.802945;0.802945;4;4;16.96;auto;(516, 371);(654, 422)
+2026-11-24T14:09:23;treino_11.pt;29;0.5;CONFORME;CONFORME;CONFORME;0.152071;0.130018;0.152071;4;4;6.59;auto;(595, 348);(595, 348)
+2026-11-24T14:16:14;treino_11.pt;29;0.5;NAO CONFORME;CONFORME;NAO CONFORME;0.100576;0.909851;0.909851;4;4;12.17;auto;(569, 402);(583, 364)

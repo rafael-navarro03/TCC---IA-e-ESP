@@ -1,0 +1,4 @@
+﻿peca;classe_real;prob_nao_conforme_frente;prob_nao_conforme_verso;prob_nao_conforme_peca;classe_prevista;acertou
+conforme/peca_20261102_160450_925777;conforme;0.996459;0.030811;0.996459;nao_conforme;0
+conforme/peca_20261102_160542_737561;conforme;0.749225;0.239609;0.749225;nao_conforme;0
+nao_conforme/peca_20261102_170259_470711;nao_conforme;0.116513;0.525463;0.525463;nao_conforme;1

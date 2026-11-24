@@ -1,0 +1,4 @@
+﻿peca;real;p_frente;p_verso;p_peca;previsto;acertou
+conforme/peca_20261102_161117_721756;conforme;0.230255;0.231446;0.231446;conforme;1
+nao_conforme/peca_20261102_164539_635000;nao_conforme;0.754354;0.419544;0.754354;nao_conforme;1
+nao_conforme/peca_20261102_165119_455925;nao_conforme;0.903883;0.482109;0.903883;nao_conforme;1

@@ -1,0 +1,780 @@
+
+================================================================================================================
+EPOCA 01/65  |  FASE: CABECALHO  |  tempo=34.8s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.66943  acuracia=57.7%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.65226  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 56.7%  prec.NC=100.0%  recall.NC=  7.1%  F1.NC=0.133  espec.=100.0%  TP= 1 TN=16 FP= 0 FN=13
+    FRENTE         N= 15  acc= 53.3%  prec.NC=  0.0%  recall.NC=  0.0%  F1.NC=0.000  espec.=100.0%  TP= 0 TN= 8 FP= 0 FN= 7
+    VERSO          N= 15  acc= 60.0%  prec.NC=100.0%  recall.NC= 14.3%  F1.NC=0.250  espec.=100.0%  TP= 1 TN= 8 FP= 0 FN= 6
+    PECAS          N= 15  acc= 60.0%  prec.NC=100.0%  recall.NC= 14.3%  F1.NC=0.250  espec.=100.0%  TP= 1 TN= 8 FP= 0 FN= 6
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.65305  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 56.7%  prec.NC=100.0%  recall.NC=  7.1%  F1.NC=0.133  espec.=100.0%  TP= 4 TN=64 FP= 0 FN=52
+    FRENTE         N= 15  acc= 53.3%  prec.NC=  0.0%  recall.NC=  0.0%  F1.NC=0.000  espec.=100.0%  TP= 0 TN= 8 FP= 0 FN= 7
+    VERSO          N= 15  acc= 60.0%  prec.NC=100.0%  recall.NC= 14.3%  F1.NC=0.250  espec.=100.0%  TP= 1 TN= 8 FP= 0 FN= 6
+    PECAS          N= 15  acc= 60.0%  prec.NC=100.0%  recall.NC= 14.3%  F1.NC=0.250  espec.=100.0%  TP= 1 TN= 8 FP= 0 FN= 6
+    ESTABILIDADE    faces com previsoes divergentes: 2 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=1  |  melhor perda 01=0.65226  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 02/65  |  FASE: CABECALHO  |  tempo=35.0s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.59872  acuracia=70.4%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.59353  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 70.0%  prec.NC= 72.7%  recall.NC= 57.1%  F1.NC=0.640  espec.= 81.2%  TP= 8 TN=13 FP= 3 FN= 6
+    FRENTE         N= 15  acc= 66.7%  prec.NC= 75.0%  recall.NC= 42.9%  F1.NC=0.545  espec.= 87.5%  TP= 3 TN= 7 FP= 1 FN= 4
+    VERSO          N= 15  acc= 73.3%  prec.NC= 71.4%  recall.NC= 71.4%  F1.NC=0.714  espec.= 75.0%  TP= 5 TN= 6 FP= 2 FN= 2
+    PECAS          N= 15  acc= 73.3%  prec.NC= 71.4%  recall.NC= 71.4%  F1.NC=0.714  espec.= 75.0%  TP= 5 TN= 6 FP= 2 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.59681  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 68.3%  prec.NC= 66.7%  recall.NC= 64.3%  F1.NC=0.655  espec.= 71.9%  TP=36 TN=46 FP=18 FN=20
+    FRENTE         N= 15  acc= 60.0%  prec.NC= 60.0%  recall.NC= 42.9%  F1.NC=0.500  espec.= 75.0%  TP= 3 TN= 6 FP= 2 FN= 4
+    VERSO          N= 15  acc= 66.7%  prec.NC= 62.5%  recall.NC= 71.4%  F1.NC=0.667  espec.= 62.5%  TP= 5 TN= 5 FP= 3 FN= 2
+    PECAS          N= 15  acc= 60.0%  prec.NC= 55.6%  recall.NC= 71.4%  F1.NC=0.625  espec.= 50.0%  TP= 5 TN= 4 FP= 4 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 16 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=2  |  melhor perda 01=0.59353  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 03/65  |  FASE: CABECALHO  |  tempo=35.2s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.55381  acuracia=74.5%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.56187  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 80.0%  prec.NC= 72.2%  recall.NC= 92.9%  F1.NC=0.813  espec.= 68.8%  TP=13 TN=11 FP= 5 FN= 1
+    FRENTE         N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    VERSO          N= 15  acc= 73.3%  prec.NC= 63.6%  recall.NC=100.0%  F1.NC=0.778  espec.= 50.0%  TP= 7 TN= 4 FP= 4 FN= 0
+    PECAS          N= 15  acc= 73.3%  prec.NC= 63.6%  recall.NC=100.0%  F1.NC=0.778  espec.= 50.0%  TP= 7 TN= 4 FP= 4 FN= 0
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.56948  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 72.5%  prec.NC= 64.2%  recall.NC= 92.9%  F1.NC=0.759  espec.= 54.7%  TP=52 TN=35 FP=29 FN= 4
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 66.7%  recall.NC= 85.7%  F1.NC=0.750  espec.= 62.5%  TP= 6 TN= 5 FP= 3 FN= 1
+    VERSO          N= 15  acc= 66.7%  prec.NC= 58.3%  recall.NC=100.0%  F1.NC=0.737  espec.= 37.5%  TP= 7 TN= 3 FP= 5 FN= 0
+    PECAS          N= 15  acc= 60.0%  prec.NC= 53.8%  recall.NC=100.0%  F1.NC=0.700  espec.= 25.0%  TP= 7 TN= 2 FP= 6 FN= 0
+    ESTABILIDADE    faces com previsoes divergentes: 7 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=3  |  melhor perda 01=0.56187  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 04/65  |  FASE: CABECALHO  |  tempo=35.5s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.52395  acuracia=77.3%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.52412  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP=10 TN=14 FP= 2 FN= 4
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    PECAS          N= 15  acc= 80.0%  prec.NC= 75.0%  recall.NC= 85.7%  F1.NC=0.800  espec.= 75.0%  TP= 6 TN= 6 FP= 2 FN= 1
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.53213  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 76.7%  prec.NC= 75.9%  recall.NC= 73.2%  F1.NC=0.745  espec.= 79.7%  TP=41 TN=51 FP=13 FN=15
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 71.4%  recall.NC= 71.4%  F1.NC=0.714  espec.= 75.0%  TP= 5 TN= 6 FP= 2 FN= 2
+    VERSO          N= 15  acc= 80.0%  prec.NC= 75.0%  recall.NC= 85.7%  F1.NC=0.800  espec.= 75.0%  TP= 6 TN= 6 FP= 2 FN= 1
+    PECAS          N= 15  acc= 80.0%  prec.NC= 70.0%  recall.NC=100.0%  F1.NC=0.824  espec.= 62.5%  TP= 7 TN= 5 FP= 3 FN= 0
+    ESTABILIDADE    faces com previsoes divergentes: 10 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=4  |  melhor perda 01=0.52412  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 05/65  |  FASE: CABECALHO  |  tempo=36.1s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.48374  acuracia=80.9%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.50291  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 80.0%  prec.NC= 90.0%  recall.NC= 64.3%  F1.NC=0.750  espec.= 93.8%  TP= 9 TN=15 FP= 1 FN= 5
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.51034  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 77.5%  prec.NC= 85.4%  recall.NC= 62.5%  F1.NC=0.722  espec.= 90.6%  TP=35 TN=58 FP= 6 FN=21
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 8 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=5  |  melhor perda 01=0.50291  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 06/65  |  FASE: CABECALHO  |  tempo=35.6s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.45317  acuracia=85.2%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.51063  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 73.3%  prec.NC=100.0%  recall.NC= 42.9%  F1.NC=0.600  espec.=100.0%  TP= 6 TN=16 FP= 0 FN= 8
+    FRENTE         N= 15  acc= 66.7%  prec.NC=100.0%  recall.NC= 28.6%  F1.NC=0.444  espec.=100.0%  TP= 2 TN= 8 FP= 0 FN= 5
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.51432  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 75.0%  prec.NC= 96.4%  recall.NC= 48.2%  F1.NC=0.643  espec.= 98.4%  TP=27 TN=63 FP= 1 FN=29
+    FRENTE         N= 15  acc= 66.7%  prec.NC=100.0%  recall.NC= 28.6%  F1.NC=0.444  espec.=100.0%  TP= 2 TN= 8 FP= 0 FN= 5
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    ESTABILIDADE    faces com previsoes divergentes: 3 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=5  |  melhor perda 01=0.50291  |  sem melhora=1/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 07/65  |  FASE: CABECALHO  |  tempo=34.6s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.45005  acuracia=83.2%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.47701  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 76.7%  prec.NC= 88.9%  recall.NC= 57.1%  F1.NC=0.696  espec.= 93.8%  TP= 8 TN=15 FP= 1 FN= 6
+    FRENTE         N= 15  acc= 66.7%  prec.NC= 75.0%  recall.NC= 42.9%  F1.NC=0.545  espec.= 87.5%  TP= 3 TN= 7 FP= 1 FN= 4
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.48379  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 75.8%  prec.NC= 88.6%  recall.NC= 55.4%  F1.NC=0.681  espec.= 93.8%  TP=31 TN=60 FP= 4 FN=25
+    FRENTE         N= 15  acc= 73.3%  prec.NC=100.0%  recall.NC= 42.9%  F1.NC=0.600  espec.=100.0%  TP= 3 TN= 8 FP= 0 FN= 4
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 6 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=7  |  melhor perda 01=0.47701  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 08/65  |  FASE: CABECALHO  |  tempo=34.7s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.43059  acuracia=82.7%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.47088  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 81.2%  recall.NC= 92.9%  F1.NC=0.867  espec.= 81.2%  TP=13 TN=13 FP= 3 FN= 1
+    FRENTE         N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    VERSO          N= 15  acc= 86.7%  prec.NC= 77.8%  recall.NC=100.0%  F1.NC=0.875  espec.= 75.0%  TP= 7 TN= 6 FP= 2 FN= 0
+    PECAS          N= 15  acc= 80.0%  prec.NC= 70.0%  recall.NC=100.0%  F1.NC=0.824  espec.= 62.5%  TP= 7 TN= 5 FP= 3 FN= 0
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.48431  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 80.0%  prec.NC= 71.6%  recall.NC= 94.6%  F1.NC=0.815  espec.= 67.2%  TP=53 TN=43 FP=21 FN= 3
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 75.0%  recall.NC= 85.7%  F1.NC=0.800  espec.= 75.0%  TP= 6 TN= 6 FP= 2 FN= 1
+    VERSO          N= 15  acc= 73.3%  prec.NC= 63.6%  recall.NC=100.0%  F1.NC=0.778  espec.= 50.0%  TP= 7 TN= 4 FP= 4 FN= 0
+    PECAS          N= 15  acc= 66.7%  prec.NC= 58.3%  recall.NC=100.0%  F1.NC=0.737  espec.= 37.5%  TP= 7 TN= 3 FP= 5 FN= 0
+    ESTABILIDADE    faces com previsoes divergentes: 9 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=8  |  melhor perda 01=0.47088  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 09/65  |  FASE: CABECALHO  |  tempo=35.4s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.41958  acuracia=84.6%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.47191  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 70.0%  prec.NC= 85.7%  recall.NC= 42.9%  F1.NC=0.571  espec.= 93.8%  TP= 6 TN=15 FP= 1 FN= 8
+    FRENTE         N= 15  acc= 60.0%  prec.NC= 66.7%  recall.NC= 28.6%  F1.NC=0.400  espec.= 87.5%  TP= 2 TN= 7 FP= 1 FN= 5
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.47877  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 74.2%  prec.NC= 90.3%  recall.NC= 50.0%  F1.NC=0.644  espec.= 95.3%  TP=28 TN=61 FP= 3 FN=28
+    FRENTE         N= 15  acc= 66.7%  prec.NC=100.0%  recall.NC= 28.6%  F1.NC=0.444  espec.=100.0%  TP= 2 TN= 8 FP= 0 FN= 5
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    ESTABILIDADE    faces com previsoes divergentes: 6 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=8  |  melhor perda 01=0.47088  |  sem melhora=1/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 10/65  |  FASE: CABECALHO  |  tempo=34.9s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.39239  acuracia=84.6%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.47796  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 73.3%  prec.NC=100.0%  recall.NC= 42.9%  F1.NC=0.600  espec.=100.0%  TP= 6 TN=16 FP= 0 FN= 8
+    FRENTE         N= 15  acc= 66.7%  prec.NC=100.0%  recall.NC= 28.6%  F1.NC=0.444  espec.=100.0%  TP= 2 TN= 8 FP= 0 FN= 5
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.48361  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 75.8%  prec.NC=100.0%  recall.NC= 48.2%  F1.NC=0.651  espec.=100.0%  TP=27 TN=64 FP= 0 FN=29
+    FRENTE         N= 15  acc= 66.7%  prec.NC=100.0%  recall.NC= 28.6%  F1.NC=0.444  espec.=100.0%  TP= 2 TN= 8 FP= 0 FN= 5
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    ESTABILIDADE    faces com previsoes divergentes: 2 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=8  |  melhor perda 01=0.47088  |  sem melhora=2/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 11/65  |  FASE: CABECALHO  |  tempo=36.0s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.38736  acuracia=86.4%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.44448  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 76.7%  prec.NC= 88.9%  recall.NC= 57.1%  F1.NC=0.696  espec.= 93.8%  TP= 8 TN=15 FP= 1 FN= 6
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.45106  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 75.8%  prec.NC= 88.6%  recall.NC= 55.4%  F1.NC=0.681  espec.= 93.8%  TP=31 TN=60 FP= 4 FN=25
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 6 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=11  |  melhor perda 01=0.44448  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 12/65  |  FASE: CABECALHO  |  tempo=35.0s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.37244  acuracia=86.1%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.45151  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 76.7%  prec.NC= 88.9%  recall.NC= 57.1%  F1.NC=0.696  espec.= 93.8%  TP= 8 TN=15 FP= 1 FN= 6
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.45564  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 77.5%  prec.NC= 93.9%  recall.NC= 55.4%  F1.NC=0.697  espec.= 96.9%  TP=31 TN=62 FP= 2 FN=25
+    FRENTE         N= 15  acc= 73.3%  prec.NC=100.0%  recall.NC= 42.9%  F1.NC=0.600  espec.=100.0%  TP= 3 TN= 8 FP= 0 FN= 4
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    ESTABILIDADE    faces com previsoes divergentes: 5 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=11  |  melhor perda 01=0.44448  |  sem melhora=1/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 13/65  |  FASE: CABECALHO  |  tempo=35.1s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.36411  acuracia=86.2%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.42979  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 76.7%  prec.NC= 88.9%  recall.NC= 57.1%  F1.NC=0.696  espec.= 93.8%  TP= 8 TN=15 FP= 1 FN= 6
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.43744  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 77.5%  prec.NC= 87.2%  recall.NC= 60.7%  F1.NC=0.716  espec.= 92.2%  TP=34 TN=59 FP= 5 FN=22
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 8 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=13  |  melhor perda 01=0.42979  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 14/65  |  FASE: CABECALHO  |  tempo=34.3s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.36306  acuracia=86.6%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.42300  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 76.7%  prec.NC= 88.9%  recall.NC= 57.1%  F1.NC=0.696  espec.= 93.8%  TP= 8 TN=15 FP= 1 FN= 6
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.42904  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 76.7%  prec.NC= 86.8%  recall.NC= 58.9%  F1.NC=0.702  espec.= 92.2%  TP=33 TN=59 FP= 5 FN=23
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 8 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=14  |  melhor perda 01=0.42300  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 15/65  |  FASE: CABECALHO  |  tempo=34.6s  |  LR usada=0.00050000  |  LR proxima=0.00050000
+  TREINO            perda=0.34991  acuracia=88.4%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.41547  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 76.7%  prec.NC= 88.9%  recall.NC= 57.1%  F1.NC=0.696  espec.= 93.8%  TP= 8 TN=15 FP= 1 FN= 6
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.42224  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 75.8%  prec.NC= 86.5%  recall.NC= 57.1%  F1.NC=0.688  espec.= 92.2%  TP=32 TN=59 FP= 5 FN=24
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 7 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=15  |  melhor perda 01=0.41547  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 16/65  |  FASE: AJUSTE     |  tempo=40.6s  |  LR usada=0.00001000  |  LR proxima=0.00001000
+  TREINO            perda=0.31515  acuracia=89.6%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.37662  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 80.0%  prec.NC= 90.0%  recall.NC= 64.3%  F1.NC=0.750  espec.= 93.8%  TP= 9 TN=15 FP= 1 FN= 5
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.38520  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 79.2%  prec.NC= 87.8%  recall.NC= 64.3%  F1.NC=0.742  espec.= 92.2%  TP=36 TN=59 FP= 5 FN=20
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 9 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=16  |  melhor perda 01=0.37662  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 17/65  |  FASE: AJUSTE     |  tempo=34.2s  |  LR usada=0.00001000  |  LR proxima=0.00001000
+  TREINO            perda=0.30835  acuracia=87.1%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.38678  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 80.0%  prec.NC= 90.0%  recall.NC= 64.3%  F1.NC=0.750  espec.= 93.8%  TP= 9 TN=15 FP= 1 FN= 5
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.39317  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 80.0%  prec.NC= 97.1%  recall.NC= 58.9%  F1.NC=0.733  espec.= 98.4%  TP=33 TN=63 FP= 1 FN=23
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 5 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=16  |  melhor perda 01=0.37662  |  sem melhora=1/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 18/65  |  FASE: AJUSTE     |  tempo=35.7s  |  LR usada=0.00001000  |  LR proxima=0.00001000
+  TREINO            perda=0.30935  acuracia=87.0%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.38019  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 80.0%  prec.NC= 90.0%  recall.NC= 64.3%  F1.NC=0.750  espec.= 93.8%  TP= 9 TN=15 FP= 1 FN= 5
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.38550  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 80.0%  prec.NC= 97.1%  recall.NC= 58.9%  F1.NC=0.733  espec.= 98.4%  TP=33 TN=63 FP= 1 FN=23
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 5 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=16  |  melhor perda 01=0.37662  |  sem melhora=2/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 19/65  |  FASE: AJUSTE     |  tempo=38.1s  |  LR usada=0.00001000  |  LR proxima=0.00001000
+  TREINO            perda=0.27306  acuracia=89.3%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.33080  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 91.7%  recall.NC= 78.6%  F1.NC=0.846  espec.= 93.8%  TP=11 TN=15 FP= 1 FN= 3
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.34039  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 86.7%  prec.NC= 88.5%  recall.NC= 82.1%  F1.NC=0.852  espec.= 90.6%  TP=46 TN=58 FP= 6 FN=10
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 8 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=19  |  melhor perda 01=0.33080  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 20/65  |  FASE: AJUSTE     |  tempo=38.1s  |  LR usada=0.00001000  |  LR proxima=0.00001000
+  TREINO            perda=0.27076  acuracia=90.0%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.36726  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 80.0%  prec.NC= 90.0%  recall.NC= 64.3%  F1.NC=0.750  espec.= 93.8%  TP= 9 TN=15 FP= 1 FN= 5
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.37045  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 80.0%  prec.NC= 97.1%  recall.NC= 58.9%  F1.NC=0.733  espec.= 98.4%  TP=33 TN=63 FP= 1 FN=23
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 5 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=19  |  melhor perda 01=0.33080  |  sem melhora=1/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 21/65  |  FASE: AJUSTE     |  tempo=38.0s  |  LR usada=0.00001000  |  LR proxima=0.00001000
+  TREINO            perda=0.24613  acuracia=90.4%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.34244  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 83.3%  prec.NC= 90.9%  recall.NC= 71.4%  F1.NC=0.800  espec.= 93.8%  TP=10 TN=15 FP= 1 FN= 4
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.34583  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 82.5%  prec.NC= 92.7%  recall.NC= 67.9%  F1.NC=0.784  espec.= 95.3%  TP=38 TN=61 FP= 3 FN=18
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 7 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=19  |  melhor perda 01=0.33080  |  sem melhora=2/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 22/65  |  FASE: AJUSTE     |  tempo=37.3s  |  LR usada=0.00001000  |  LR proxima=0.00001000
+  TREINO            perda=0.22214  acuracia=92.5%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.33615  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 83.3%  prec.NC= 90.9%  recall.NC= 71.4%  F1.NC=0.800  espec.= 93.8%  TP=10 TN=15 FP= 1 FN= 4
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.33844  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 83.3%  prec.NC= 92.9%  recall.NC= 69.6%  F1.NC=0.796  espec.= 95.3%  TP=39 TN=61 FP= 3 FN=17
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 7 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=19  |  melhor perda 01=0.33080  |  sem melhora=3/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 23/65  |  FASE: AJUSTE     |  tempo=36.3s  |  LR usada=0.00001000  |  LR proxima=0.00000500
+  TREINO            perda=0.22987  acuracia=91.6%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.40783  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 83.3%  prec.NC=100.0%  recall.NC= 64.3%  F1.NC=0.783  espec.=100.0%  TP= 9 TN=16 FP= 0 FN= 5
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.40874  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP=32 TN=64 FP= 0 FN=24
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 3 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=19  |  melhor perda 01=0.33080  |  sem melhora=4/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 24/65  |  FASE: AJUSTE     |  tempo=35.4s  |  LR usada=0.00000500  |  LR proxima=0.00000500
+  TREINO            perda=0.23907  acuracia=90.7%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.32505  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 83.3%  prec.NC= 90.9%  recall.NC= 71.4%  F1.NC=0.800  espec.= 93.8%  TP=10 TN=15 FP= 1 FN= 4
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.32674  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 83.3%  prec.NC= 92.9%  recall.NC= 69.6%  F1.NC=0.796  espec.= 95.3%  TP=39 TN=61 FP= 3 FN=17
+    FRENTE         N= 15  acc= 73.3%  prec.NC= 80.0%  recall.NC= 57.1%  F1.NC=0.667  espec.= 87.5%  TP= 4 TN= 7 FP= 1 FN= 3
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 7 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=24  |  melhor perda 01=0.32505  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 25/65  |  FASE: AJUSTE     |  tempo=35.7s  |  LR usada=0.00000500  |  LR proxima=0.00000500
+  TREINO            perda=0.21062  acuracia=92.3%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.31220  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 91.7%  recall.NC= 78.6%  F1.NC=0.846  espec.= 93.8%  TP=11 TN=15 FP= 1 FN= 3
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.31364  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 86.7%  prec.NC= 91.7%  recall.NC= 78.6%  F1.NC=0.846  espec.= 93.8%  TP=44 TN=60 FP= 4 FN=12
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 4 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=25  |  melhor perda 01=0.31220  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 26/65  |  FASE: AJUSTE     |  tempo=35.5s  |  LR usada=0.00000500  |  LR proxima=0.00000500
+  TREINO            perda=0.22269  acuracia=91.8%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.31091  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 91.7%  recall.NC= 78.6%  F1.NC=0.846  espec.= 93.8%  TP=11 TN=15 FP= 1 FN= 3
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.31280  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 87.5%  prec.NC= 91.8%  recall.NC= 80.4%  F1.NC=0.857  espec.= 93.8%  TP=45 TN=60 FP= 4 FN=11
+    FRENTE         N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 4 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=26  |  melhor perda 01=0.31091  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 27/65  |  FASE: AJUSTE     |  tempo=35.5s  |  LR usada=0.00000500  |  LR proxima=0.00000500
+  TREINO            perda=0.20892  acuracia=92.9%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.33219  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 83.3%  prec.NC= 90.9%  recall.NC= 71.4%  F1.NC=0.800  espec.= 93.8%  TP=10 TN=15 FP= 1 FN= 4
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.33208  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 82.5%  prec.NC= 92.7%  recall.NC= 67.9%  F1.NC=0.784  espec.= 95.3%  TP=38 TN=61 FP= 3 FN=18
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 7 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=26  |  melhor perda 01=0.31091  |  sem melhora=1/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 28/65  |  FASE: AJUSTE     |  tempo=35.3s  |  LR usada=0.00000500  |  LR proxima=0.00000500
+  TREINO            perda=0.20768  acuracia=93.4%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.33812  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 83.3%  prec.NC= 90.9%  recall.NC= 71.4%  F1.NC=0.800  espec.= 93.8%  TP=10 TN=15 FP= 1 FN= 4
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.33834  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 81.7%  prec.NC= 94.7%  recall.NC= 64.3%  F1.NC=0.766  espec.= 96.9%  TP=36 TN=62 FP= 2 FN=20
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 6 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=26  |  melhor perda 01=0.31091  |  sem melhora=2/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 29/65  |  FASE: AJUSTE     |  tempo=35.2s  |  LR usada=0.00000500  |  LR proxima=0.00000500
+  TREINO            perda=0.19027  acuracia=93.9%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.29489  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 91.7%  recall.NC= 78.6%  F1.NC=0.846  espec.= 93.8%  TP=11 TN=15 FP= 1 FN= 3
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.29721  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 88.3%  prec.NC= 90.4%  recall.NC= 83.9%  F1.NC=0.870  espec.= 92.2%  TP=47 TN=59 FP= 5 FN= 9
+    FRENTE         N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 6 de 30
+  CHECKPOINT       NOVO MELHOR MODELO SALVO  |  melhor epoca=29  |  melhor perda 01=0.29489  |  sem melhora=0/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 30/65  |  FASE: AJUSTE     |  tempo=35.5s  |  LR usada=0.00000500  |  LR proxima=0.00000500
+  TREINO            perda=0.21031  acuracia=92.3%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.30877  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 91.7%  recall.NC= 78.6%  F1.NC=0.846  espec.= 93.8%  TP=11 TN=15 FP= 1 FN= 3
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.30781  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 85.8%  prec.NC= 93.3%  recall.NC= 75.0%  F1.NC=0.832  espec.= 95.3%  TP=42 TN=61 FP= 3 FN=14
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 5 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=29  |  melhor perda 01=0.29489  |  sem melhora=1/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 31/65  |  FASE: AJUSTE     |  tempo=35.6s  |  LR usada=0.00000500  |  LR proxima=0.00000500
+  TREINO            perda=0.18087  acuracia=94.8%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.31204  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 83.3%  prec.NC= 90.9%  recall.NC= 71.4%  F1.NC=0.800  espec.= 93.8%  TP=10 TN=15 FP= 1 FN= 4
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.30986  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 84.2%  prec.NC= 93.0%  recall.NC= 71.4%  F1.NC=0.808  espec.= 95.3%  TP=40 TN=61 FP= 3 FN=16
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 6 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=29  |  melhor perda 01=0.29489  |  sem melhora=2/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 32/65  |  FASE: AJUSTE     |  tempo=33.2s  |  LR usada=0.00000500  |  LR proxima=0.00000500
+  TREINO            perda=0.20190  acuracia=92.7%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.31285  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 83.3%  prec.NC= 90.9%  recall.NC= 71.4%  F1.NC=0.800  espec.= 93.8%  TP=10 TN=15 FP= 1 FN= 4
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.31098  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 84.2%  prec.NC= 93.0%  recall.NC= 71.4%  F1.NC=0.808  espec.= 95.3%  TP=40 TN=61 FP= 3 FN=16
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 6 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=29  |  melhor perda 01=0.29489  |  sem melhora=3/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 33/65  |  FASE: AJUSTE     |  tempo=34.5s  |  LR usada=0.00000500  |  LR proxima=0.00000250
+  TREINO            perda=0.18520  acuracia=93.8%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.32734  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 83.3%  prec.NC= 90.9%  recall.NC= 71.4%  F1.NC=0.800  espec.= 93.8%  TP=10 TN=15 FP= 1 FN= 4
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.32516  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 83.3%  prec.NC= 95.0%  recall.NC= 67.9%  F1.NC=0.792  espec.= 96.9%  TP=38 TN=62 FP= 2 FN=18
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    ESTABILIDADE    faces com previsoes divergentes: 7 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=29  |  melhor perda 01=0.29489  |  sem melhora=4/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 34/65  |  FASE: AJUSTE     |  tempo=36.3s  |  LR usada=0.00000250  |  LR proxima=0.00000250
+  TREINO            perda=0.17442  acuracia=94.3%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.32230  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 83.3%  prec.NC= 90.9%  recall.NC= 71.4%  F1.NC=0.800  espec.= 93.8%  TP=10 TN=15 FP= 1 FN= 4
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.32020  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 84.2%  prec.NC= 95.1%  recall.NC= 69.6%  F1.NC=0.804  espec.= 96.9%  TP=39 TN=62 FP= 2 FN=17
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 7 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=29  |  melhor perda 01=0.29489  |  sem melhora=5/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 35/65  |  FASE: AJUSTE     |  tempo=35.8s  |  LR usada=0.00000250  |  LR proxima=0.00000250
+  TREINO            perda=0.17713  acuracia=94.5%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.31405  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 83.3%  prec.NC= 90.9%  recall.NC= 71.4%  F1.NC=0.800  espec.= 93.8%  TP=10 TN=15 FP= 1 FN= 4
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    PECAS          N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.31211  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 83.3%  prec.NC= 92.9%  recall.NC= 69.6%  F1.NC=0.796  espec.= 95.3%  TP=39 TN=61 FP= 3 FN=17
+    FRENTE         N= 15  acc= 80.0%  prec.NC=100.0%  recall.NC= 57.1%  F1.NC=0.727  espec.=100.0%  TP= 4 TN= 8 FP= 0 FN= 3
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 7 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=29  |  melhor perda 01=0.29489  |  sem melhora=6/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 36/65  |  FASE: AJUSTE     |  tempo=35.6s  |  LR usada=0.00000250  |  LR proxima=0.00000250
+  TREINO            perda=0.18601  acuracia=93.4%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.30879  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 91.7%  recall.NC= 78.6%  F1.NC=0.846  espec.= 93.8%  TP=11 TN=15 FP= 1 FN= 3
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.30646  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 85.8%  prec.NC= 93.3%  recall.NC= 75.0%  F1.NC=0.832  espec.= 95.3%  TP=42 TN=61 FP= 3 FN=14
+    FRENTE         N= 15  acc= 86.7%  prec.NC=100.0%  recall.NC= 71.4%  F1.NC=0.833  espec.=100.0%  TP= 5 TN= 8 FP= 0 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 5 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=29  |  melhor perda 01=0.29489  |  sem melhora=7/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 37/65  |  FASE: AJUSTE     |  tempo=31.8s  |  LR usada=0.00000250  |  LR proxima=0.00000125
+  TREINO            perda=0.19984  acuracia=93.0%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.30349  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 91.7%  recall.NC= 78.6%  F1.NC=0.846  espec.= 93.8%  TP=11 TN=15 FP= 1 FN= 3
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.30095  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 86.7%  prec.NC= 93.5%  recall.NC= 76.8%  F1.NC=0.843  espec.= 95.3%  TP=43 TN=61 FP= 3 FN=13
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 4 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=29  |  melhor perda 01=0.29489  |  sem melhora=8/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 38/65  |  FASE: AJUSTE     |  tempo=36.3s  |  LR usada=0.00000125  |  LR proxima=0.00000125
+  TREINO            perda=0.17700  acuracia=95.0%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.30458  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 91.7%  recall.NC= 78.6%  F1.NC=0.846  espec.= 93.8%  TP=11 TN=15 FP= 1 FN= 3
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.30178  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 86.7%  prec.NC= 93.5%  recall.NC= 76.8%  F1.NC=0.843  espec.= 95.3%  TP=43 TN=61 FP= 3 FN=13
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 4 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=29  |  melhor perda 01=0.29489  |  sem melhora=9/10
+================================================================================================================
+
+================================================================================================================
+EPOCA 39/65  |  FASE: AJUSTE     |  tempo=37.5s  |  LR usada=0.00000125  |  LR proxima=0.00000125
+  TREINO            perda=0.16293  acuracia=95.2%  (4 fotografias por face; pesos atualizados)
+  VALIDACAO: FOTO 01 (criterio para salvar o melhor checkpoint)
+  ORIGINAL          perda=0.30828  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 91.7%  recall.NC= 78.6%  F1.NC=0.846  espec.= 93.8%  TP=11 TN=15 FP= 1 FN= 3
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+  VALIDACAO: MEDIA DE 4 (mesma rede; diagnostico, nao escolhe checkpoint)
+  MEDIA DE 4        perda=0.30505  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 85.0%  prec.NC= 93.2%  recall.NC= 73.2%  F1.NC=0.820  espec.= 95.3%  TP=41 TN=61 FP= 3 FN=15
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com previsoes divergentes: 5 de 30
+  CHECKPOINT       Sem melhora de perda na foto 01  |  melhor epoca=29  |  melhor perda 01=0.29489  |  sem melhora=10/10
+================================================================================================================
+
+================================================================================================================
+RESULTADO FINAL | treino_17 | melhor epoca 29
+Criterio de selecao: menor perda da FOTO 01 na validacao = 0.29489
+A avaliacao com MEDIA DE 4 usa os MESMOS pesos do modelo salvo.
+
+VALIDACAO | 15 pecas fisicas
+  FOTO 01           perda=0.29489  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 91.7%  recall.NC= 78.6%  F1.NC=0.846  espec.= 93.8%  TP=11 TN=15 FP= 1 FN= 3
+    FRENTE         N= 15  acc= 80.0%  prec.NC= 83.3%  recall.NC= 71.4%  F1.NC=0.769  espec.= 87.5%  TP= 5 TN= 7 FP= 1 FN= 2
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+  MEDIA DE 4        perda=0.29721  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 88.3%  prec.NC= 90.4%  recall.NC= 83.9%  F1.NC=0.870  espec.= 92.2%  TP=47 TN=59 FP= 5 FN= 9
+    FRENTE         N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    VERSO          N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 85.7%  F1.NC=0.923  espec.=100.0%  TP= 6 TN= 8 FP= 0 FN= 1
+    PECAS          N= 15  acc= 86.7%  prec.NC= 85.7%  recall.NC= 85.7%  F1.NC=0.857  espec.= 87.5%  TP= 6 TN= 7 FP= 1 FN= 1
+    ESTABILIDADE    faces com divergencias: 6 de 30
+
+TESTE | 15 pecas fisicas
+  FOTO 01           perda=0.34207  (cross-entropy media por fotografia)
+    IMAGENS        N= 30  acc= 86.7%  prec.NC= 78.6%  recall.NC= 91.7%  F1.NC=0.846  espec.= 83.3%  TP=11 TN=15 FP= 3 FN= 1
+    FRENTE         N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 80.0%  F1.NC=0.889  espec.=100.0%  TP= 4 TN=10 FP= 0 FN= 1
+    VERSO          N= 15  acc= 80.0%  prec.NC= 70.0%  recall.NC=100.0%  F1.NC=0.824  espec.= 62.5%  TP= 7 TN= 5 FP= 3 FN= 0
+    PECAS          N= 15  acc= 86.7%  prec.NC= 80.0%  recall.NC=100.0%  F1.NC=0.889  espec.= 71.4%  TP= 8 TN= 5 FP= 2 FN= 0
+  MEDIA DE 4        perda=0.34801  (cross-entropy media por fotografia)
+    IMAGENS        N=120  acc= 87.5%  prec.NC= 80.0%  recall.NC= 91.7%  F1.NC=0.854  espec.= 84.7%  TP=44 TN=61 FP=11 FN= 4
+    FRENTE         N= 15  acc= 93.3%  prec.NC=100.0%  recall.NC= 80.0%  F1.NC=0.889  espec.=100.0%  TP= 4 TN=10 FP= 0 FN= 1
+    VERSO          N= 15  acc= 86.7%  prec.NC= 77.8%  recall.NC=100.0%  F1.NC=0.875  espec.= 75.0%  TP= 7 TN= 6 FP= 2 FN= 0
+    PECAS          N= 15  acc= 80.0%  prec.NC= 77.8%  recall.NC= 87.5%  F1.NC=0.824  espec.= 71.4%  TP= 7 TN= 5 FP= 2 FN= 1
+    ESTABILIDADE    faces com divergencias: 5 de 30
+
+================================================================================================================
+MODELO SALVO: C:\Users\Rafa\Documents\Facul\10º Semestre\TCC\TCC - IA e ESP\IA e INTERFACE\modelos\treino_17.pt
+RELATORIOS:   C:\Users\Rafa\Documents\Facul\10º Semestre\TCC\TCC - IA e ESP\IA e INTERFACE\relatorios\treino_17
+NOTA: 4 fotos de uma face sao correlacionadas; nao sao 4 pecas independentes.
+NOTA: as fotos 02/03/04 sao transformadas, diferentes de frames novos do INSPECTA.
+NOTA: o conjunto de teste nao participa da selecao do checkpoint.
+================================================================================================================

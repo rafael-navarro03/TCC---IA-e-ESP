@@ -1,0 +1,16 @@
+﻿peca;real;prob_frente;prob_verso;prob_peca;previsto;acertou
+conforme/peca_20261103_164821_160018;conforme;0.229687;0.932157;0.932157;nao_conforme;0
+conforme/peca_20261103_170353_956064;conforme;0.065532;0.018664;0.065532;conforme;1
+conforme/peca_20261103_170829_687582;conforme;0.336189;0.041496;0.336189;conforme;1
+conforme/peca_20261103_171909_420606;conforme;0.082899;0.013725;0.082899;conforme;1
+conforme/peca_20261122_165742_714805;conforme;0.058355;0.670249;0.670249;nao_conforme;0
+conforme/peca_20261122_170043_411839;conforme;0.013538;0.076198;0.076198;conforme;1
+conforme/peca_20261122_170426_221257;conforme;0.379279;0.565301;0.565301;nao_conforme;0
+nao_conforme/peca_20261103_161524_633817;nao_conforme;0.984922;0.995807;0.995807;nao_conforme;1
+nao_conforme/peca_20261103_162115_098093;nao_conforme;0.802929;0.986424;0.986424;nao_conforme;1
+nao_conforme/peca_20261103_162323_245680;nao_conforme;0.493242;0.848626;0.848626;nao_conforme;1
+nao_conforme/peca_20261103_164002_791632;nao_conforme;0.821088;0.526573;0.821088;nao_conforme;1
+nao_conforme/peca_20261122_171347_507478;nao_conforme;0.038675;0.83069;0.83069;nao_conforme;1
+nao_conforme/peca_20261122_171921_584545;nao_conforme;0.012474;0.316688;0.316688;conforme;0
+nao_conforme/peca_20261122_172422_576836;nao_conforme;0.239371;0.736996;0.736996;nao_conforme;1
+nao_conforme/peca_20261122_172805_988158;nao_conforme;0.053316;0.951819;0.951819;nao_conforme;1
