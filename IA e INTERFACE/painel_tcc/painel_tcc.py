@@ -62,6 +62,7 @@ SUAVIZACAO = 4
 PREVIEW_LARGURA = 1050
 PREVIEW_FPS = 8
 TIMEOUT_FRAME = 3.0
+TFT_REENVIO_S = 8.0
 
 # Detector pressupõe peça iluminada sobre bancada preta fosca.
 MARGEM_DETECCAO_X = 0.13
@@ -307,6 +308,7 @@ class Motor:
         self.stop_evt = threading.Event()
         self.worker = threading.Thread(target=self._run, daemon=True)
         self.status_worker = threading.Thread(target=self._poll_esp, daemon=True)
+        self.tft_worker = threading.Thread(target=self._sync_tft, daemon=True)
         if torch.cuda.is_available():
             self.device = torch.device("cuda")
         elif hasattr(torch.backends, "mps") and torch.backends.mps.is_available():
@@ -345,6 +347,10 @@ class Motor:
             except (OSError, csv.Error):
                 pass
         self.status_esp = {}
+        self.tft_evento = threading.Event()
+        self.tft_ultimo_enviado = None
+        self.tft_ultimo_sucesso = 0.0
+        self.tft_ultimo_erro = None
         self.last_status_poll = 0
         self.neo = {"mode": "dual", "color1": "FF0000", "color2": "FA9696", "brightness": 50}
         self.last_frame_seq = -1
@@ -353,13 +359,69 @@ class Motor:
     def start(self):
         self.worker.start()
         self.status_worker.start()
+        self.tft_worker.start()
 
     def stop(self):
         self.stop_evt.set()
+        self.tft_evento.set()
+
         if self.worker.is_alive():
             self.worker.join(timeout=2)
         if self.status_worker.is_alive():
             self.status_worker.join(timeout=2)
+        if self.tft_worker.is_alive():
+            self.tft_worker.join(timeout=2)
+
+    def _estado_tft_locked(self):
+        if (
+            self.phase == "done"
+            and self.model is not None
+            and self.piece_prob is not None
+        ):
+            if self.piece_prob >= self.model.threshold:
+                return "nao_conforme"
+            return "conforme"
+
+        return "esperando"
+
+    def _sync_tft(self):
+        while not self.stop_evt.is_set():
+
+            with self.lock:
+                desejado = self._estado_tft_locked()
+                precisa_enviar = (
+                    desejado != self.tft_ultimo_enviado
+                    or time.monotonic() - self.tft_ultimo_sucesso
+                    >= TFT_REENVIO_S
+                )
+
+            pausa = 0.6
+
+            if precisa_enviar:
+                try:
+                    resposta = requests.post(
+                        ESP_HTTP + "/tft",
+                        json={"estado": desejado},
+                        timeout=(0.7, 1.2),
+                    )
+                    resposta.raise_for_status()
+
+                except requests.RequestException as exc:
+                    with self.lock:
+                        self.tft_ultimo_erro = str(exc)
+
+                    pausa = 2.0
+
+                else:
+                    with self.lock:
+                        self.tft_ultimo_enviado = desejado
+                        self.tft_ultimo_sucesso = time.monotonic()
+                        self.tft_ultimo_erro = None
+
+                    pausa = 0.2
+
+            self.tft_evento.wait(pausa)
+            self.tft_evento.clear()
 
     def _poll_esp(self):
         while not self.stop_evt.is_set():
@@ -406,6 +468,7 @@ class Motor:
         self.smooth_prob = None
         self.last_prob = None
         self.last_infer = 0.0
+        self.tft_evento.set()
 
     def set_model(self, name):
         names = {p.name: p for p in listar_modelos()}
@@ -558,6 +621,7 @@ class Motor:
                                                 self.piece_prob = max(self.face_mean["front"], self.face_mean["back"])
                                                 self.phase = "done"
                                                 self._log_result_locked()
+                                                self.tft_evento.set()
                 self.last_infer = time.monotonic()
             self.stop_evt.wait(.03)
 
@@ -633,6 +697,11 @@ class Motor:
                     "elapsed_s": round(now-self.start_time, 1) if self.start_time else None,
                 },
                 "neo": dict(self.neo),
+                "tft": {
+                    "desejado": self._estado_tft_locked(),
+                    "ultimo_enviado": self.tft_ultimo_enviado,
+                    "ultimo_erro": self.tft_ultimo_erro,
+                },
                 "last_error": self.last_error,
                 "recent": list(self.inspections)[:8],
             }

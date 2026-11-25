@@ -468,7 +468,7 @@ def configurar_otimizador(modelo, fase):
     for parametro in modelo.features.parameters():
         parametro.requires_grad = False
     if fase == "ajuste":
-        for parametro in modelo.features[-2:].parameters():
+        for parametro in modelo.features[-3:].parameters():
             parametro.requires_grad = True
     for parametro in modelo.classifier.parameters():
         parametro.requires_grad = True

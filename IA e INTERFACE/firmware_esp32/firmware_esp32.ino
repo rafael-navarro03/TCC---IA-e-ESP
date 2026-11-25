@@ -1,57 +1,27 @@
-// INSPECTA V2: este sketch usa painel_tcc_esp.h na mesma pasta.
-// Camera, pinagem, comandos e NeoPixel preservados do teste1.ino enviado.
-
-/*
-  SISTEMA DE INSPECAO VISUAL
-  ESP32 / OV2640 / WS2812B
-
-  Base: codigo_stream.ino do projeto.
-
-  TFT removido do software:
-  - Sem SPI
-  - Sem buffer RGB565
-  - Sem decodificacao JPEG para display
-
-  Enderecos:
-    Pagina: http://IP_DA_ESP32/
-    MJPEG:  http://IP_DA_ESP32:81/stream
-    JPEG:   http://IP_DA_ESP32/capture
-    Status: http://IP_DA_ESP32/status
-
-  Arduino IDE:
-    Board: ESP32 Dev Module
-    PSRAM: Enabled
-
-  Biblioteca:
-    Adafruit NeoPixel
-*/
 
 #include <Arduino.h>
 #include "esp_camera.h"
 #include <WiFi.h>
 #include "esp_http_server.h"
+#include <SPI.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_ILI9341.h>
 #include <Adafruit_NeoPixel.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/semphr.h"
 
-// =====================================================
-// REDE
-// =====================================================
+#include "painel_tcc_esp.h"
 
-const char* WIFI_SSID = "Navarro";
-const char* WIFI_PASSWORD = "@16152206";
+// Rede Wi-Fi. Configure antes de gravar a placa.
+const char* WIFI_SSID = "SUA_REDE_WIFI";
+const char* WIFI_PASSWORD = "SUA_SENHA_WIFI";
 
-// =====================================================
-// OV2640 - SUNFOUNDER
-// =====================================================
-
+// Camera OV2640 - SunFounder
 #define PWDN_GPIO_NUM  32
 #define RESET_GPIO_NUM 33
-
 #define XCLK_GPIO_NUM   0
 #define SIOD_GPIO_NUM  26
 #define SIOC_GPIO_NUM  27
-
 #define Y9_GPIO_NUM    35
 #define Y8_GPIO_NUM    34
 #define Y7_GPIO_NUM    39
@@ -60,18 +30,26 @@ const char* WIFI_PASSWORD = "@16152206";
 #define Y4_GPIO_NUM    19
 #define Y3_GPIO_NUM    18
 #define Y2_GPIO_NUM     5
-
 #define VSYNC_GPIO_NUM 25
 #define HREF_GPIO_NUM  23
 #define PCLK_GPIO_NUM  22
 
-// =====================================================
-// NEOPIXEL
-// =====================================================
+// TFT ILI9341 - pinagem original do projeto
+#define TFT_CS   15
+#define TFT_DC    4
+#define TFT_RST   2
+#define TFT_SCK  14
+#define TFT_MOSI 13
 
-#define NEO_PIN 12
-#define NUMPIXELS 24
-#define NEO_INTERVAL 80
+// Os pinos do TFT compartilham o barramento do microSD.
+// Nao utilizar o cartao SD simultaneamente ao display.
+SPIClass hspi(HSPI);
+Adafruit_ILI9341 tft(&hspi, TFT_DC, TFT_CS, TFT_RST);
+
+// Anel de iluminacao WS2812B
+#define NEO_PIN       12
+#define NUMPIXELS     24
+#define NEO_INTERVAL  80
 
 Adafruit_NeoPixel pixels(
   NUMPIXELS,
@@ -86,54 +64,248 @@ enum NeoMode {
   NEO_CHASE
 };
 
-// Padrao: dois tons alternados no anel de 24 LEDs.
 volatile NeoMode neoMode = NEO_DUAL;
-
-// Cor 1: vermelho forte - RGB(255, 0, 0).
 volatile uint32_t neoColor1 = 0xFF0000;
-
-// Cor 2: rosa claro - RGB(250, 150, 150).
 volatile uint32_t neoColor2 = 0xFA9696;
-
 volatile uint8_t neoBrightness = 50;
 volatile bool neoDirty = true;
 
 uint32_t neoPosition = 0;
 unsigned long lastNeo = 0;
 
-// =====================================================
-// CAMERA / ESTATISTICAS
-// =====================================================
+// Estados do display
+enum EstadoTFT : uint8_t {
+  TFT_ESPERANDO = 0,
+  TFT_CONFORME = 1,
+  TFT_NAO_CONFORME = 2
+};
 
+volatile uint8_t estadoTFTRecebido = TFT_ESPERANDO;
+uint8_t estadoTFTExibido = 255;
+bool tftPronto = false;
+
+// Camera e estatisticas
 bool cameraOK = false;
 
 volatile uint32_t streamFrameTotal = 0;
 volatile uint32_t streamClients = 0;
-
 volatile uint32_t lastJpegBytes = 0;
 volatile uint16_t lastWidth = 0;
 volatile uint16_t lastHeight = 0;
 
 float streamFPS = 0.0f;
-
 uint32_t previousStreamFrames = 0;
 unsigned long statsTime = 0;
 
 httpd_handle_t camera_httpd = NULL;
 httpd_handle_t stream_httpd = NULL;
-
-// Acesso serializado ao driver da camera. O servidor HTTP
-// da pagina e o do MJPEG executam em tarefas diferentes.
 SemaphoreHandle_t cameraMutex = NULL;
 
 // =====================================================
-// PAGINA WEB
+// TFT
 // =====================================================
 
-#include "painel_tcc_esp.h"
+void textoCentralizado(const char* texto, int16_t y) {
+  const uint8_t escala = 3;
+  int16_t largura = strlen(texto) * 6 * escala;
+  int16_t x = (tft.width() - largura) / 2;
+
+  tft.setTextSize(escala);
+  tft.setTextColor(ILI9341_WHITE);
+  tft.setTextWrap(false);
+  tft.setCursor(max(0, (int)x), y);
+  tft.print(texto);
+}
+
+void desenharTFT(uint8_t estado) {
+  if (!tftPronto) return;
+
+  // CP437 permite exibir os caracteres ç e ã.
+  const char* esperando = "Esperando Pe\x87" "a";
+  const char* conforme = "Pe\x87" "a Conforme";
+  const char* peca = "Pe\x87" "a";
+  const char* naoConforme = "N\xC6" "o Conforme";
+
+  switch (estado) {
+    case TFT_ESPERANDO:
+      tft.fillScreen(tft.color565(125, 125, 125));
+      textoCentralizado(esperando, 108);
+      break;
+
+    case TFT_CONFORME:
+      tft.fillScreen(ILI9341_GREEN);
+      textoCentralizado(conforme, 108);
+      break;
+
+    case TFT_NAO_CONFORME:
+      tft.fillScreen(ILI9341_RED);
+      textoCentralizado(peca, 80);
+      textoCentralizado(naoConforme, 128);
+      break;
+
+    default:
+      return;
+  }
+
+  estadoTFTExibido = estado;
+}
+
+void iniciarTFT() {
+  hspi.begin(TFT_SCK, -1, TFT_MOSI, TFT_CS);
+
+  // Clock conservador para estabilidade nos fios do projeto.
+  tft.begin(20000000);
+  tft.setRotation(1);
+  tft.cp437(true);
+  tft.setTextWrap(false);
+
+  tftPronto = true;
+  estadoTFTRecebido = TFT_ESPERANDO;
+  desenharTFT(TFT_ESPERANDO);
+
+  Serial.println("TFT ILI9341 inicializado");
+}
+
+void atualizarTFT() {
+  if (!tftPronto) return;
+
+  uint8_t novoEstado = estadoTFTRecebido;
+
+  if (novoEstado != estadoTFTExibido) {
+    desenharTFT(novoEstado);
+  }
+}
+
+const char* nomeEstadoTFT(uint8_t estado) {
+  switch (estado) {
+    case TFT_CONFORME:
+      return "conforme";
+
+    case TFT_NAO_CONFORME:
+      return "nao_conforme";
+
+    default:
+      return "esperando";
+  }
+}
 
 // =====================================================
-// PARAMETROS HTTP
+// POST /tft
+// =====================================================
+
+bool interpretarEstadoTFT(
+  const String& corpo,
+  uint8_t& estado
+) {
+  String valor = corpo;
+  valor.trim();
+
+  // Aceita JSON: {"estado":"conforme"}
+  if (valor.startsWith("{")) {
+    int chave = valor.indexOf("\"estado\"");
+
+    if (chave < 0) return false;
+
+    int doisPontos = valor.indexOf(':', chave + 8);
+
+    if (doisPontos < 0) return false;
+
+    int inicio = valor.indexOf('"', doisPontos + 1);
+
+    if (inicio < 0) return false;
+
+    int fim = valor.indexOf('"', inicio + 1);
+
+    if (fim < 0) return false;
+
+    valor = valor.substring(inicio + 1, fim);
+  }
+
+  valor.trim();
+  valor.toLowerCase();
+
+  if (valor == "esperando") {
+    estado = TFT_ESPERANDO;
+    return true;
+  }
+
+  if (valor == "conforme") {
+    estado = TFT_CONFORME;
+    return true;
+  }
+
+  if (valor == "nao_conforme") {
+    estado = TFT_NAO_CONFORME;
+    return true;
+  }
+
+  return false;
+}
+
+esp_err_t tftHandler(httpd_req_t* req) {
+  const size_t tamanho = req->content_len;
+
+  if (tamanho == 0 || tamanho > 96) {
+    httpd_resp_send_err(
+      req,
+      HTTPD_400_BAD_REQUEST,
+      "Corpo da requisicao invalido"
+    );
+    return ESP_FAIL;
+  }
+
+  char corpo[97];
+  size_t recebido = 0;
+
+  while (recebido < tamanho) {
+    int n = httpd_req_recv(
+      req,
+      corpo + recebido,
+      tamanho - recebido
+    );
+
+    if (n == HTTPD_SOCK_ERR_TIMEOUT) {
+      continue;
+    }
+
+    if (n <= 0) {
+      return ESP_FAIL;
+    }
+
+    recebido += (size_t)n;
+  }
+
+  corpo[tamanho] = '\0';
+
+  uint8_t novoEstado;
+
+  if (!interpretarEstadoTFT(String(corpo), novoEstado)) {
+    httpd_resp_send_err(
+      req,
+      HTTPD_400_BAD_REQUEST,
+      "Estado TFT desconhecido"
+    );
+    return ESP_FAIL;
+  }
+
+  // O desenho ocorre no loop principal.
+  estadoTFTRecebido = novoEstado;
+
+  Serial.printf(
+    "POST /tft: %s\n",
+    nomeEstadoTFT(novoEstado)
+  );
+
+  httpd_resp_set_type(req, "application/json");
+
+  return httpd_resp_sendstr(
+    req,
+    "{\"ok\":true}"
+  );
+}
+
+// =====================================================
+// PARAMETROS E RESOLUCOES
 // =====================================================
 
 bool getParam(
@@ -142,7 +314,6 @@ bool getParam(
   char* output,
   size_t outputSize
 ) {
-
   char query[192];
 
   if (
@@ -163,96 +334,43 @@ bool getParam(
   ) == ESP_OK;
 }
 
-// =====================================================
-// RESOLUCOES
-// =====================================================
-
-framesize_t frameSizeFromString(
-  const char* value
-) {
-
-  if (!strcmp(value, "QVGA"))
-    return FRAMESIZE_QVGA;
-
-  if (!strcmp(value, "VGA"))
-    return FRAMESIZE_VGA;
-
-  if (!strcmp(value, "SVGA"))
-    return FRAMESIZE_SVGA;
-
-  if (!strcmp(value, "XGA"))
-    return FRAMESIZE_XGA;
-
-  if (!strcmp(value, "SXGA"))
-    return FRAMESIZE_SXGA;
-
-  if (!strcmp(value, "UXGA"))
-    return FRAMESIZE_UXGA;
+framesize_t frameSizeFromString(const char* value) {
+  if (!strcmp(value, "QVGA")) return FRAMESIZE_QVGA;
+  if (!strcmp(value, "VGA"))  return FRAMESIZE_VGA;
+  if (!strcmp(value, "SVGA")) return FRAMESIZE_SVGA;
+  if (!strcmp(value, "XGA"))  return FRAMESIZE_XGA;
+  if (!strcmp(value, "SXGA")) return FRAMESIZE_SXGA;
+  if (!strcmp(value, "UXGA")) return FRAMESIZE_UXGA;
 
   return FRAMESIZE_INVALID;
 }
 
-const char* frameSizeToString(
-  framesize_t size
-) {
-
+const char* frameSizeToString(framesize_t size) {
   switch (size) {
-
-    case FRAMESIZE_QVGA:
-      return "QVGA 320x240";
-
-    case FRAMESIZE_VGA:
-      return "VGA 640x480";
-
-    case FRAMESIZE_SVGA:
-      return "SVGA 800x600";
-
-    case FRAMESIZE_XGA:
-      return "XGA 1024x768";
-
-    case FRAMESIZE_SXGA:
-      return "SXGA 1280x1024";
-
-    case FRAMESIZE_UXGA:
-      return "UXGA 1600x1200";
-
-    default:
-      return "Outra";
+    case FRAMESIZE_QVGA: return "QVGA 320x240";
+    case FRAMESIZE_VGA:  return "VGA 640x480";
+    case FRAMESIZE_SVGA: return "SVGA 800x600";
+    case FRAMESIZE_XGA:  return "XGA 1024x768";
+    case FRAMESIZE_SXGA: return "SXGA 1280x1024";
+    case FRAMESIZE_UXGA: return "UXGA 1600x1200";
+    default:             return "Outra";
   }
 }
 
-// =====================================================
-// MODOS DE ILUMINACAO
-// =====================================================
-
-const char* neoModeString(
-  NeoMode mode
-) {
-
+const char* neoModeString(NeoMode mode) {
   switch (mode) {
-
-    case NEO_SOLID:
-      return "solid";
-
-    case NEO_DUAL:
-      return "dual";
-
-    case NEO_CHASE:
-      return "chase";
-
-    default:
-      return "off";
+    case NEO_SOLID: return "solid";
+    case NEO_DUAL:  return "dual";
+    case NEO_CHASE: return "chase";
+    default:        return "off";
   }
 }
 
 // =====================================================
-// PAGINA PRINCIPAL
+// PAGINA PRINCIPAL E STATUS
 // =====================================================
 
-esp_err_t indexHandler(
-  httpd_req_t* req
-) {
-
+esp_err_t indexHandler(httpd_req_t* req) {
   httpd_resp_set_type(
     req,
     "text/html; charset=utf-8"
@@ -271,51 +389,29 @@ esp_err_t indexHandler(
   );
 }
 
-// =====================================================
-// STATUS
-// =====================================================
+esp_err_t statusHandler(httpd_req_t* req) {
+  sensor_t* sensor = esp_camera_sensor_get();
 
-esp_err_t statusHandler(
-  httpd_req_t* req
-) {
-
-  sensor_t* sensor =
-    esp_camera_sensor_get();
-
-  const char* size =
-    sensor
+  const char* size = sensor
     ? frameSizeToString(sensor->status.framesize)
     : "N/A";
 
-  int quality =
-    sensor ? sensor->status.quality : 0;
+  int quality = sensor ? sensor->status.quality : 0;
+  int brightness = sensor ? sensor->status.brightness : 0;
+  int contrast = sensor ? sensor->status.contrast : 0;
+  int saturation = sensor ? sensor->status.saturation : 0;
+  int mirror = sensor ? sensor->status.hmirror : 0;
+  int flip = sensor ? sensor->status.vflip : 0;
 
-  int brightness =
-    sensor ? sensor->status.brightness : 0;
-
-  int contrast =
-    sensor ? sensor->status.contrast : 0;
-
-  int saturation =
-    sensor ? sensor->status.saturation : 0;
-
-  int mirror =
-    sensor ? sensor->status.hmirror : 0;
-
-  int flip =
-    sensor ? sensor->status.vflip : 0;
-
-  int rssi =
-    WiFi.status() == WL_CONNECTED
+  int rssi = WiFi.status() == WL_CONNECTED
     ? WiFi.RSSI()
     : 0;
 
-  char json[480];
+  char json[560];
 
   snprintf(
     json,
     sizeof(json),
-
     "{"
       "\"stream_fps\":%.2f,"
       "\"clients\":%u,"
@@ -331,9 +427,9 @@ esp_err_t statusHandler(
       "\"color1\":\"%06lX\","
       "\"color2\":\"%06lX\","
       "\"neo_brightness\":%u,"
-      "\"jpeg_bytes\":%u"
+      "\"jpeg_bytes\":%u,"
+      "\"tft_estado\":\"%s\""
     "}",
-
     streamFPS,
     (unsigned int)streamClients,
     rssi,
@@ -345,17 +441,11 @@ esp_err_t statusHandler(
     mirror,
     flip,
     neoModeString(neoMode),
-
-    (unsigned long)(
-      neoColor1 & 0xFFFFFFUL
-    ),
-
-    (unsigned long)(
-      neoColor2 & 0xFFFFFFUL
-    ),
-
+    (unsigned long)(neoColor1 & 0xFFFFFFUL),
+    (unsigned long)(neoColor2 & 0xFFFFFFUL),
     (unsigned int)neoBrightness,
-    (unsigned int)lastJpegBytes
+    (unsigned int)lastJpegBytes,
+    nomeEstadoTFT(estadoTFTRecebido)
   );
 
   httpd_resp_set_type(
@@ -369,133 +459,91 @@ esp_err_t statusHandler(
     "no-store"
   );
 
-  return httpd_resp_sendstr(
-    req,
-    json
-  );
+  return httpd_resp_sendstr(req, json);
 }
 
 // =====================================================
 // CONTROLE DA CAMERA
 // =====================================================
 
-esp_err_t controlHandler(
-  httpd_req_t* req
-) {
-
+esp_err_t controlHandler(httpd_req_t* req) {
   char key[32];
   char val[32];
 
   if (
-    !getParam(
-      req, "var", key, sizeof(key)
-    ) ||
-    !getParam(
-      req, "val", val, sizeof(val)
-    )
+    !getParam(req, "var", key, sizeof(key)) ||
+    !getParam(req, "val", val, sizeof(val))
   ) {
-
     httpd_resp_send_err(
       req,
       HTTPD_400_BAD_REQUEST,
       "Parametros invalidos"
     );
-
     return ESP_FAIL;
   }
 
-  sensor_t* sensor =
-    esp_camera_sensor_get();
+  sensor_t* sensor = esp_camera_sensor_get();
 
   if (!sensor) {
-
     httpd_resp_send_500(req);
     return ESP_FAIL;
   }
 
-  // Evita alterar registradores da OV2640 no instante de
-  // esp_camera_fb_get() em outra tarefa.
-  if (cameraMutex && xSemaphoreTake(cameraMutex, pdMS_TO_TICKS(2500)) != pdTRUE) {
+  if (
+    cameraMutex &&
+    xSemaphoreTake(
+      cameraMutex,
+      pdMS_TO_TICKS(2500)
+    ) != pdTRUE
+  ) {
     httpd_resp_send_500(req);
     return ESP_FAIL;
   }
 
   int result = -1;
 
-  // RESOLUCAO
   if (!strcmp(key, "framesize")) {
-
-    framesize_t size =
-      frameSizeFromString(val);
+    framesize_t size = frameSizeFromString(val);
 
     if (size != FRAMESIZE_INVALID) {
-
-      result =
-        sensor->set_framesize(
-          sensor,
-          size
-        );
+      result = sensor->set_framesize(sensor, size);
     }
   }
-
-  // QUALIDADE JPEG
   else if (!strcmp(key, "quality")) {
-
-    result =
-      sensor->set_quality(
-        sensor,
-        constrain(atoi(val), 0, 63)
-      );
+    result = sensor->set_quality(
+      sensor,
+      constrain(atoi(val), 0, 63)
+    );
   }
-
-  // BRILHO
   else if (!strcmp(key, "brightness")) {
-
-    result =
-      sensor->set_brightness(
-        sensor,
-        constrain(atoi(val), -2, 2)
-      );
+    result = sensor->set_brightness(
+      sensor,
+      constrain(atoi(val), -2, 2)
+    );
   }
-
-  // CONTRASTE
   else if (!strcmp(key, "contrast")) {
-
-    result =
-      sensor->set_contrast(
-        sensor,
-        constrain(atoi(val), -2, 2)
-      );
+    result = sensor->set_contrast(
+      sensor,
+      constrain(atoi(val), -2, 2)
+    );
   }
-
-  // SATURACAO
   else if (!strcmp(key, "saturation")) {
-
-    result =
-      sensor->set_saturation(
-        sensor,
-        constrain(atoi(val), -2, 2)
-      );
+    result = sensor->set_saturation(
+      sensor,
+      constrain(atoi(val), -2, 2)
+    );
   }
-
-  // ESPELHAMENTO
   else if (!strcmp(key, "hmirror")) {
-
-    result =
-      sensor->set_hmirror(
-        sensor,
-        atoi(val) ? 1 : 0
-      );
+    result = sensor->set_hmirror(
+      sensor,
+      atoi(val) ? 1 : 0
+    );
   }
-
-  // INVERSAO VERTICAL
   else if (!strcmp(key, "vflip")) {
-
-    result =
-      sensor->set_vflip(
-        sensor,
-        atoi(val) ? 1 : 0
-      );
+    result = sensor->set_vflip(
+      sensor,
+      atoi(val) ? 1 : 0
+    );
   }
 
   if (cameraMutex) {
@@ -503,154 +551,104 @@ esp_err_t controlHandler(
   }
 
   if (result != 0) {
-
     httpd_resp_send_err(
       req,
       HTTPD_500_INTERNAL_SERVER_ERROR,
       "Falha ao alterar camera"
     );
-
     return ESP_FAIL;
   }
 
-  return httpd_resp_sendstr(
-    req,
-    "OK"
-  );
+  return httpd_resp_sendstr(req, "OK");
 }
 
 // =====================================================
 // CONTROLE DO NEOPIXEL
 // =====================================================
 
-esp_err_t neoHandler(
-  httpd_req_t* req
-) {
-
+esp_err_t neoHandler(httpd_req_t* req) {
   char val[32];
 
-  // MODO
   if (
-    getParam(
-      req,
-      "mode",
-      val,
-      sizeof(val)
-    )
+    getParam(req, "mode", val, sizeof(val))
   ) {
-
     if (!strcmp(val, "off")) {
       neoMode = NEO_OFF;
     }
-
     else if (!strcmp(val, "solid")) {
       neoMode = NEO_SOLID;
     }
-
     else if (!strcmp(val, "dual")) {
       neoMode = NEO_DUAL;
     }
-
     else if (!strcmp(val, "chase")) {
       neoMode = NEO_CHASE;
     }
   }
 
-  // PRIMEIRA COR
   if (
-    getParam(
-      req,
-      "color1",
-      val,
-      sizeof(val)
-    )
+    getParam(req, "color1", val, sizeof(val))
   ) {
-
     neoColor1 =
-      strtoul(
-        val,
-        nullptr,
-        16
-      ) & 0xFFFFFFUL;
+      strtoul(val, nullptr, 16) & 0xFFFFFFUL;
   }
 
-  // SEGUNDA COR
   if (
-    getParam(
-      req,
-      "color2",
-      val,
-      sizeof(val)
-    )
+    getParam(req, "color2", val, sizeof(val))
   ) {
-
     neoColor2 =
-      strtoul(
-        val,
-        nullptr,
-        16
-      ) & 0xFFFFFFUL;
+      strtoul(val, nullptr, 16) & 0xFFFFFFUL;
   }
 
-  // INTENSIDADE
   if (
-    getParam(
-      req,
-      "brightness",
-      val,
-      sizeof(val)
-    )
+    getParam(req, "brightness", val, sizeof(val))
   ) {
-
-    neoBrightness =
-      (uint8_t)constrain(
-        atoi(val),
-        0,
-        255
-      );
+    neoBrightness = (uint8_t)constrain(
+      atoi(val),
+      0,
+      255
+    );
   }
 
   neoDirty = true;
 
-  return httpd_resp_sendstr(
-    req,
-    "OK"
-  );
+  return httpd_resp_sendstr(req, "OK");
 }
 
 // =====================================================
 // CAPTURA JPEG
 // =====================================================
 
-esp_err_t captureHandler(
-  httpd_req_t* req
-) {
-
-  if (cameraMutex && xSemaphoreTake(cameraMutex, pdMS_TO_TICKS(1500)) != pdTRUE) {
+esp_err_t captureHandler(httpd_req_t* req) {
+  if (
+    cameraMutex &&
+    xSemaphoreTake(
+      cameraMutex,
+      pdMS_TO_TICKS(1500)
+    ) != pdTRUE
+  ) {
     httpd_resp_send_500(req);
     return ESP_FAIL;
   }
+
   camera_fb_t* fb = esp_camera_fb_get();
-  if (cameraMutex) xSemaphoreGive(cameraMutex);
+
+  if (cameraMutex) {
+    xSemaphoreGive(cameraMutex);
+  }
 
   if (!fb) {
-
     httpd_resp_send_500(req);
     return ESP_FAIL;
   }
 
   if (fb->format != PIXFORMAT_JPEG) {
-
     esp_camera_fb_return(fb);
-
     httpd_resp_send_500(req);
     return ESP_FAIL;
   }
 
-  httpd_resp_set_type(
-    req,
-    "image/jpeg"
-  );
+  httpd_resp_set_type(req, "image/jpeg");
 
   httpd_resp_set_hdr(
     req,
@@ -664,51 +662,38 @@ esp_err_t captureHandler(
     "inline; filename=capture.jpg"
   );
 
-  esp_err_t result =
-    httpd_resp_send(
-      req,
-      (const char*)fb->buf,
-      fb->len
-    );
+  esp_err_t result = httpd_resp_send(
+    req,
+    (const char*)fb->buf,
+    fb->len
+  );
 
   esp_camera_fb_return(fb);
-
   return result;
 }
 
 // =====================================================
-// MJPEG
+// STREAM MJPEG
 // =====================================================
 
-#define PART_BOUNDARY \
-  "123456789000000000000987654321"
+#define PART_BOUNDARY "123456789000000000000987654321"
 
 static const char* STREAM_CONTENT_TYPE =
   "multipart/x-mixed-replace;boundary="
   PART_BOUNDARY;
 
 static const char* STREAM_BOUNDARY =
-  "\r\n--"
-  PART_BOUNDARY
-  "\r\n";
+  "\r\n--" PART_BOUNDARY "\r\n";
 
 static const char* STREAM_PART =
   "Content-Type: image/jpeg\r\n"
   "Content-Length: %u\r\n\r\n";
 
-// =====================================================
-// STREAM HANDLER
-// =====================================================
-
-esp_err_t streamHandler(
-  httpd_req_t* req
-) {
-
-  esp_err_t result =
-    httpd_resp_set_type(
-      req,
-      STREAM_CONTENT_TYPE
-    );
+esp_err_t streamHandler(httpd_req_t* req) {
+  esp_err_t result = httpd_resp_set_type(
+    req,
+    STREAM_CONTENT_TYPE
+  );
 
   if (result != ESP_OK) {
     return result;
@@ -727,26 +712,36 @@ esp_err_t streamHandler(
   );
 
   streamClients++;
-
-  // Durante alteracoes de qualidade/resolucao, alguns
-  // frames podem falhar. Uma falha isolada nao encerra o MJPEG.
   uint8_t consecutiveFailures = 0;
 
   while (true) {
-
     camera_fb_t* fb = NULL;
-    if (!cameraMutex || xSemaphoreTake(cameraMutex, pdMS_TO_TICKS(1500)) == pdTRUE) {
+
+    if (
+      !cameraMutex ||
+      xSemaphoreTake(
+        cameraMutex,
+        pdMS_TO_TICKS(1500)
+      ) == pdTRUE
+    ) {
       fb = esp_camera_fb_get();
-      if (cameraMutex) xSemaphoreGive(cameraMutex);
+
+      if (cameraMutex) {
+        xSemaphoreGive(cameraMutex);
+      }
     }
 
     if (!fb) {
       consecutiveFailures++;
+
       if (consecutiveFailures >= 20) {
-        Serial.println("Stream: camera indisponivel por muitas tentativas; reconectando cliente");
+        Serial.println(
+          "Stream: camera indisponivel"
+        );
         result = ESP_FAIL;
         break;
       }
+
       vTaskDelay(pdMS_TO_TICKS(100));
       continue;
     }
@@ -754,63 +749,53 @@ esp_err_t streamHandler(
     if (fb->format != PIXFORMAT_JPEG) {
       esp_camera_fb_return(fb);
       consecutiveFailures++;
+
       if (consecutiveFailures >= 20) {
         result = ESP_FAIL;
         break;
       }
+
       vTaskDelay(pdMS_TO_TICKS(100));
       continue;
     }
 
     consecutiveFailures = 0;
 
-    lastJpegBytes =
-      (uint32_t)fb->len;
-
+    lastJpegBytes = (uint32_t)fb->len;
     lastWidth = fb->width;
     lastHeight = fb->height;
 
     char header[64];
 
-    int headerLength =
-      snprintf(
-        header,
-        sizeof(header),
-        STREAM_PART,
-        (unsigned int)fb->len
-      );
+    int headerLength = snprintf(
+      header,
+      sizeof(header),
+      STREAM_PART,
+      (unsigned int)fb->len
+    );
 
-    // ENVIA SEPARADOR
-    result =
-      httpd_resp_send_chunk(
+    result = httpd_resp_send_chunk(
+      req,
+      STREAM_BOUNDARY,
+      strlen(STREAM_BOUNDARY)
+    );
+
+    if (result == ESP_OK) {
+      result = httpd_resp_send_chunk(
         req,
-        STREAM_BOUNDARY,
-        strlen(STREAM_BOUNDARY)
+        header,
+        headerLength
       );
-
-    // ENVIA CABECALHO JPEG
-    if (result == ESP_OK) {
-
-      result =
-        httpd_resp_send_chunk(
-          req,
-          header,
-          headerLength
-        );
     }
 
-    // ENVIA JPEG ORIGINAL
     if (result == ESP_OK) {
-
-      result =
-        httpd_resp_send_chunk(
-          req,
-          (const char*)fb->buf,
-          fb->len
-        );
+      result = httpd_resp_send_chunk(
+        req,
+        (const char*)fb->buf,
+        fb->len
+      );
     }
 
-    // DEVOLVE BUFFER PARA CAMERA
     esp_camera_fb_return(fb);
 
     if (result != ESP_OK) {
@@ -818,7 +803,6 @@ esp_err_t streamHandler(
     }
 
     streamFrameTotal++;
-
     vTaskDelay(1);
   }
 
@@ -834,97 +818,85 @@ esp_err_t streamHandler(
 // =====================================================
 
 void startCameraServer() {
-
-  httpd_config_t config =
-    HTTPD_DEFAULT_CONFIG();
+  httpd_config_t config = HTTPD_DEFAULT_CONFIG();
 
   config.max_uri_handlers = 10;
 
-  // PAGINA
   httpd_uri_t indexUri = {};
-
   indexUri.uri = "/";
   indexUri.method = HTTP_GET;
   indexUri.handler = indexHandler;
 
-  // STATUS
   httpd_uri_t statusUri = {};
-
   statusUri.uri = "/status";
   statusUri.method = HTTP_GET;
   statusUri.handler = statusHandler;
 
-  // CAMERA
   httpd_uri_t controlUri = {};
-
   controlUri.uri = "/control";
   controlUri.method = HTTP_GET;
   controlUri.handler = controlHandler;
 
-  // NEOPIXEL
   httpd_uri_t neoUri = {};
-
   neoUri.uri = "/neo";
   neoUri.method = HTTP_GET;
   neoUri.handler = neoHandler;
 
-  // FOTO
   httpd_uri_t captureUri = {};
-
   captureUri.uri = "/capture";
   captureUri.method = HTTP_GET;
   captureUri.handler = captureHandler;
 
-  // SERVIDOR PRINCIPAL
+  httpd_uri_t tftUri = {};
+  tftUri.uri = "/tft";
+  tftUri.method = HTTP_POST;
+  tftUri.handler = tftHandler;
+
   if (
     httpd_start(
       &camera_httpd,
       &config
     ) == ESP_OK
   ) {
-
     httpd_register_uri_handler(
-      camera_httpd,
-      &indexUri
+      camera_httpd, &indexUri
     );
 
     httpd_register_uri_handler(
-      camera_httpd,
-      &statusUri
+      camera_httpd, &statusUri
     );
 
     httpd_register_uri_handler(
-      camera_httpd,
-      &controlUri
+      camera_httpd, &controlUri
     );
 
     httpd_register_uri_handler(
-      camera_httpd,
-      &neoUri
+      camera_httpd, &neoUri
     );
 
     httpd_register_uri_handler(
-      camera_httpd,
-      &captureUri
+      camera_httpd, &captureUri
+    );
+
+    httpd_register_uri_handler(
+      camera_httpd, &tftUri
     );
 
     Serial.println(
-      "Interface HTTP: porta 80"
+      "HTTP: porta 80 | POST /tft ativo"
     );
-
-  } else {
-
+  }
+  else {
     Serial.println(
-      "Erro iniciando interface HTTP"
+      "Erro iniciando servidor HTTP"
     );
   }
 
-  // SERVIDOR MJPEG
+  // Servidor separado para o stream.
   config.server_port += 1;
   config.ctrl_port += 1;
 
   httpd_uri_t streamUri = {};
-
   streamUri.uri = "/stream";
   streamUri.method = HTTP_GET;
   streamUri.handler = streamHandler;
@@ -935,39 +907,30 @@ void startCameraServer() {
       &config
     ) == ESP_OK
   ) {
-
     httpd_register_uri_handler(
       stream_httpd,
       &streamUri
     );
 
+    Serial.println("MJPEG: porta 81");
+  }
+  else {
     Serial.println(
-      "MJPEG: porta 81"
-    );
-
-  } else {
-
-    Serial.println(
-      "Erro iniciando MJPEG"
+      "Erro iniciando servidor MJPEG"
     );
   }
 }
 
 // =====================================================
-// CAMERA - CONFIGURACAO ORIGINAL
+// INICIALIZACAO DA CAMERA
 // =====================================================
 
 bool initCamera() {
-
   camera_config_t config = {};
 
-  config.ledc_channel =
-    LEDC_CHANNEL_0;
+  config.ledc_channel = LEDC_CHANNEL_0;
+  config.ledc_timer = LEDC_TIMER_0;
 
-  config.ledc_timer =
-    LEDC_TIMER_0;
-
-  // DADOS DA CAMERA
   config.pin_d0 = Y2_GPIO_NUM;
   config.pin_d1 = Y3_GPIO_NUM;
   config.pin_d2 = Y4_GPIO_NUM;
@@ -977,112 +940,59 @@ bool initCamera() {
   config.pin_d6 = Y8_GPIO_NUM;
   config.pin_d7 = Y9_GPIO_NUM;
 
-  // CONTROLE DA CAMERA
   config.pin_xclk = XCLK_GPIO_NUM;
   config.pin_pclk = PCLK_GPIO_NUM;
   config.pin_vsync = VSYNC_GPIO_NUM;
   config.pin_href = HREF_GPIO_NUM;
 
-  config.pin_sccb_sda =
-    SIOD_GPIO_NUM;
+  config.pin_sccb_sda = SIOD_GPIO_NUM;
+  config.pin_sccb_scl = SIOC_GPIO_NUM;
 
-  config.pin_sccb_scl =
-    SIOC_GPIO_NUM;
+  config.pin_pwdn = PWDN_GPIO_NUM;
+  config.pin_reset = RESET_GPIO_NUM;
 
-  config.pin_pwdn =
-    PWDN_GPIO_NUM;
-
-  config.pin_reset =
-    RESET_GPIO_NUM;
-
-  // PARAMETROS ORIGINAIS
   config.xclk_freq_hz = 20000000;
-
-  config.frame_size =
-    FRAMESIZE_UXGA;
-
-  config.pixel_format =
-    PIXFORMAT_JPEG;
-
+  config.frame_size = FRAMESIZE_UXGA;
+  config.pixel_format = PIXFORMAT_JPEG;
   config.jpeg_quality = 10;
 
-  // FRAMEBUFFERS
   if (psramFound()) {
-
     config.fb_count = 2;
-
-    config.grab_mode =
-      CAMERA_GRAB_LATEST;
-
-    config.fb_location =
-      CAMERA_FB_IN_PSRAM;
-
-  } else {
-
+    config.grab_mode = CAMERA_GRAB_LATEST;
+    config.fb_location = CAMERA_FB_IN_PSRAM;
+  }
+  else {
     Serial.println(
-      "PSRAM nao encontrada: "
-      "resolucao limitada a VGA"
+      "PSRAM indisponivel: usando VGA"
     );
 
-    config.frame_size =
-      FRAMESIZE_VGA;
-
+    config.frame_size = FRAMESIZE_VGA;
     config.fb_count = 1;
-
-    config.grab_mode =
-      CAMERA_GRAB_WHEN_EMPTY;
-
-    config.fb_location =
-      CAMERA_FB_IN_DRAM;
+    config.grab_mode = CAMERA_GRAB_WHEN_EMPTY;
+    config.fb_location = CAMERA_FB_IN_DRAM;
   }
 
-  // INICIALIZA CAMERA
-  esp_err_t err =
-    esp_camera_init(&config);
+  esp_err_t err = esp_camera_init(&config);
 
   if (err != ESP_OK) {
-
     Serial.printf(
       "Erro na camera: 0x%x\n",
       err
     );
-
     return false;
   }
 
-  sensor_t* sensor =
-    esp_camera_sensor_get();
+  sensor_t* sensor = esp_camera_sensor_get();
 
   if (!sensor) {
     return false;
   }
 
-  // Mesmo inicio do codigo original.
-  // Resolucao pode ser alterada pelo navegador.
-  sensor->set_framesize(
-    sensor,
-    FRAMESIZE_VGA
-  );
-
-  sensor->set_quality(
-    sensor,
-    10
-  );
-
-  sensor->set_brightness(
-    sensor,
-    0
-  );
-
-  sensor->set_contrast(
-    sensor,
-    0
-  );
-
-  sensor->set_saturation(
-    sensor,
-    0
-  );
+  sensor->set_framesize(sensor, FRAMESIZE_VGA);
+  sensor->set_quality(sensor, 10);
+  sensor->set_brightness(sensor, 0);
+  sensor->set_contrast(sensor, 0);
+  sensor->set_saturation(sensor, 0);
 
   return true;
 }
@@ -1092,9 +1002,7 @@ bool initCamera() {
 // =====================================================
 
 bool initWiFi() {
-
   WiFi.mode(WIFI_STA);
-
   WiFi.setSleep(false);
 
   WiFi.begin(
@@ -1102,17 +1010,14 @@ bool initWiFi() {
     WIFI_PASSWORD
   );
 
-  Serial.print(
-    "Conectando ao Wi-Fi"
-  );
+  Serial.print("Conectando ao Wi-Fi");
 
-  unsigned long start = millis();
+  unsigned long inicio = millis();
 
   while (
     WiFi.status() != WL_CONNECTED &&
-    millis() - start < 20000
+    millis() - inicio < 20000
   ) {
-
     delay(300);
     Serial.print(".");
   }
@@ -1120,17 +1025,13 @@ bool initWiFi() {
   Serial.println();
 
   if (WiFi.status() == WL_CONNECTED) {
-
     Serial.print("IP: ");
     Serial.println(WiFi.localIP());
-
     return true;
   }
 
-  // PONTO DE ACESSO
   Serial.println(
-    "Rede indisponivel; "
-    "criando ponto de acesso"
+    "Wi-Fi indisponivel. Iniciando AP."
   );
 
   WiFi.disconnect(true);
@@ -1154,33 +1055,22 @@ bool initWiFi() {
 }
 
 // =====================================================
-// NEOPIXEL - ILUMINACAO
+// ILUMINACAO
 // =====================================================
 
 void updateNeoPixel() {
-
-  // ATUALIZACAO DE CONFIGURACAO
   if (neoDirty) {
+    pixels.setBrightness(neoBrightness);
 
-    pixels.setBrightness(
-      neoBrightness
-    );
-
-    // DESLIGADO
     if (neoMode == NEO_OFF) {
-
       pixels.clear();
       pixels.show();
     }
-
-    // COR UNICA OU DUAS CORES ALTERNADAS
     else if (
       neoMode == NEO_SOLID ||
       neoMode == NEO_DUAL
     ) {
-
       for (int i = 0; i < NUMPIXELS; i++) {
-
         uint32_t rgb =
           (
             neoMode == NEO_DUAL &&
@@ -1205,21 +1095,19 @@ void updateNeoPixel() {
     neoDirty = false;
   }
 
-  // MODO SEQUENCIAL
   if (neoMode != NEO_CHASE) {
     return;
   }
 
-  unsigned long now = millis();
+  unsigned long agora = millis();
 
   if (
-    now - lastNeo <
-    NEO_INTERVAL
+    agora - lastNeo < NEO_INTERVAL
   ) {
     return;
   }
 
-  lastNeo = now;
+  lastNeo = agora;
 
   pixels.clear();
 
@@ -1235,7 +1123,6 @@ void updateNeoPixel() {
   );
 
   pixels.show();
-
   neoPosition++;
 }
 
@@ -1244,28 +1131,22 @@ void updateNeoPixel() {
 // =====================================================
 
 void updateStats() {
+  unsigned long agora = millis();
 
-  unsigned long now = millis();
-
-  if (
-    now - statsTime < 2000
-  ) {
+  if (agora - statsTime < 2000) {
     return;
   }
 
   float elapsed =
-    (now - statsTime) / 1000.0f;
+    (agora - statsTime) / 1000.0f;
 
-  uint32_t current =
-    streamFrameTotal;
+  uint32_t current = streamFrameTotal;
 
   streamFPS =
-    (current - previousStreamFrames) /
-    elapsed;
+    (current - previousStreamFrames) / elapsed;
 
   previousStreamFrames = current;
-
-  statsTime = now;
+  statsTime = agora;
 
   Serial.printf(
     "Stream %.1f FPS | "
@@ -1273,15 +1154,16 @@ void updateStats() {
     "JPEG %u bytes | "
     "clientes %u | "
     "Heap %u | "
-    "PSRAM %u\n",
-
+    "PSRAM %u | "
+    "TFT %s\n",
     streamFPS,
     (unsigned int)lastWidth,
     (unsigned int)lastHeight,
     (unsigned int)lastJpegBytes,
     (unsigned int)streamClients,
     ESP.getFreeHeap(),
-    ESP.getFreePsram()
+    ESP.getFreePsram(),
+    nomeEstadoTFT(estadoTFTRecebido)
   );
 }
 
@@ -1290,26 +1172,22 @@ void updateStats() {
 // =====================================================
 
 void setup() {
-
   Serial.begin(115200);
   delay(500);
 
   Serial.println(
-    "SISTEMA DE INSPECAO VISUAL"
+    "INSPECTA - SISTEMA DE INSPECAO VISUAL"
   );
 
-  // INICIALIZA ILUMINACAO
+  // Mantem a iluminacao original.
   pixels.begin();
-
-  pixels.setBrightness(
-    neoBrightness
-  );
-
+  pixels.setBrightness(neoBrightness);
   pixels.clear();
   pixels.show();
-
-  // Aplica iluminacao dupla inicial: vermelho e rosa.
   updateNeoPixel();
+
+  // O TFT inicia cinza antes mesmo da conexao Wi-Fi.
+  iniciarTFT();
 
   Serial.printf(
     "PSRAM: %s\n",
@@ -1318,27 +1196,24 @@ void setup() {
       : "indisponivel"
   );
 
-  // Protege o driver contra capturas e ajustes simultaneos.
   cameraMutex = xSemaphoreCreateMutex();
+
   if (!cameraMutex) {
-    Serial.println("Aviso: mutex da camera indisponivel");
+    Serial.println(
+      "Aviso: mutex da camera indisponivel"
+    );
   }
 
-  // INICIALIZA CAMERA
   cameraOK = initCamera();
 
   if (!cameraOK) {
-
     Serial.println(
       "Nao foi possivel iniciar a camera"
     );
-
     return;
   }
 
-  // INICIALIZA WIFI
   if (initWiFi()) {
-
     startCameraServer();
 
     IPAddress ip =
@@ -1346,21 +1221,16 @@ void setup() {
       ? WiFi.softAPIP()
       : WiFi.localIP();
 
-    Serial.print(
-      "Interface: http://"
-    );
-
+    Serial.print("Interface: http://");
     Serial.println(ip);
 
-    Serial.print(
-      "Video: http://"
-    );
-
+    Serial.print("Video: http://");
     Serial.print(ip);
+    Serial.println(":81/stream");
 
-    Serial.println(
-      ":81/stream"
-    );
+    Serial.print("TFT: http://");
+    Serial.print(ip);
+    Serial.println("/tft");
   }
 
   statsTime = millis();
@@ -1368,21 +1238,18 @@ void setup() {
 }
 
 // =====================================================
-// LOOP - SEM TFT
+// LOOP
 // =====================================================
 
 void loop() {
-
   updateNeoPixel();
+  atualizarTFT();
 
   if (!cameraOK) {
-
     delay(50);
     return;
   }
 
-  // Nenhuma captura concorrente para display.
   updateStats();
-
   delay(1);
 }
